@@ -3,11 +3,12 @@
 		class="tw-h-full tw-mx-auto tw-px-10 tw-max-w-[1200px] tw-flex tw-justify-between tw-items-center"
 	>
 		<img src="assets/images/logo.png" alt="q-market" />
-		<nav class="tw-hidden md:tw-w-fit md:tw-block tw-text-text">
+		<nav class="tw-hidden md:tw-w-fit md:tw-block tw-text-text" appHighlightMenuItem>
 			<ul class="tw-flex tw-flex-col md:tw-flex-row tw-text-lg tw-px-5 tw-py-3 tw-backdrop-blur-sm">
 				<li
 					*ngFor="let item of navItems"
-					class="tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
+					[attr.data-section-id]="item"
+					class="menu-item tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
 					(click)="scrollTo(item)"
 				>
 					{{ item }}
@@ -15,26 +16,29 @@
 			</ul>
 		</nav>
 
-		<mat-icon
-			*ngIf="isMenuOpen"
-			class="close-icon tw-cursor-pointer md:tw-hidden"
-			svgIcon="close"
-			(click)="toggleMenu()"
-		></mat-icon>
+		<div class="tw-relative tw-h-7 tw-w-7">
+			<mat-icon
+				[@fadeOut]="isMenuOpen ? 'visible' : 'hidden'"
+				class="close-icon tw-cursor-pointer md:tw-hidden tw-absolute tw-top-0 tw-left-0"
+				svgIcon="close"
+				(click)="toggleMenu()"
+			></mat-icon>
 
-		<mat-icon
-			*ngIf="!isMenuOpen"
-			class="close-icon tw-cursor-pointer md:tw-hidden"
-			svgIcon="burger"
-			(click)="toggleMenu()"
-		></mat-icon>
+			<mat-icon
+				[@fadeOut]="!isMenuOpen ? 'visible' : 'hidden'"
+				class="close-icon tw-cursor-pointer md:tw-hidden tw-scale-75 tw-absolute tw-top-0 tw-left-0"
+				svgIcon="burger"
+				(click)="toggleMenu()"
+			></mat-icon>
+		</div>
 	</div>
 </header>
 <nav *ngIf="isMenuOpen" class="tw-items-center tw-w-full md:tw-hidden tw-text-text">
 	<ul class="tw-flex tw-flex-col md:tw-flex-row tw-text-lg tw-px-5 tw-py-3 tw-backdrop-blur-sm">
 		<li
 			*ngFor="let item of navItems"
-			class="tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
+			[attr.data-section-id]="item"
+			class="menu-item tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
 			(click)="scrollTo(item)"
 		>
 			{{ item }}

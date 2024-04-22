@@ -64,6 +64,7 @@ body {
 	input::placeholder {
 		color: #ebebeb;
 		opacity: 30%;
+		font-size: 16px;
 	}
 
 	input:focus {
@@ -85,4 +86,12 @@ body {
 
 .card {
 	@apply tw-bg-main tw-bg-gradient-to-r tw-from-[#2F0D414D] tw-to-[#2F0D4199] tw-text-text tw-border tw-border-solid tw-border-border-second tw-rounded-2xl;
+}
+
+.mat-mdc-fab.mat-primary,
+.mat-mdc-mini-fab.mat-primary {
+	--mat-fab-foreground-color: rgba(255, 255, 255, 0) !important;
+	--mat-fab-state-layer-color: rgba(255, 255, 255, 0) !important;
+	--mat-fab-small-foreground-color: rgba(255, 255, 255, 0) !important;
+	--mat-fab-small-state-layer-color: rgba(255, 255, 255, 0) !important;
 }

@@ -13,13 +13,25 @@
 				<mat-expansion-panel-header class="tw-flex tw-justify-between">
 					<mat-panel-title class="tw-text-start"> {{ panel.title }}</mat-panel-title>
 					<mat-panel-description class="tw-flex tw-justify-end tw-max-w-fit">
-						<button *ngIf="panel.open" mat-mini-fab color="primary">
-							<mat-icon svgIcon="minus"></mat-icon>
-						</button>
+						<div class="tw-relative tw-h-10 tw-w-10">
+							<button
+								class="tw-absolute tw-top-0 tw-left-0"
+								[@fadeOut]="panel.open ? 'visible' : 'hidden'"
+								mat-mini-fab
+								color="primary"
+							>
+								<mat-icon svgIcon="minus"></mat-icon>
+							</button>
 
-						<button *ngIf="!panel.open" mat-mini-fab color="primary">
-							<mat-icon svgIcon="plus"></mat-icon>
-						</button>
+							<button
+								class="tw-absolute tw-top-0 tw-left-0"
+								[@fadeOut]="!panel.open ? 'visible' : 'hidden'"
+								mat-mini-fab
+								color="primary"
+							>
+								<mat-icon svgIcon="plus"></mat-icon>
+							</button>
+						</div>
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<p>{{ panel.description }}</p>
