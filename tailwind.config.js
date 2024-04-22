@@ -20,6 +20,7 @@ module.exports = {
 			},
 			backgroundImage: {
 				'main-img': "url('/assets/images/background.png')",
+				'mobile-img': "url('/assets/images/bg-mobile.png')",
 				'modal-img': "url('/assets/images/bg-modal.png')",
 			},
 		},
