@@ -43,13 +43,14 @@ export class HeaderComponent {
 	}
 
 	scrollTo(id: string) {
-		const targetElement = document.getElementById(id) as HTMLElement;
-		if (targetElement) {
-			const offsetTop = targetElement.offsetTop - 80;
-			window.scrollTo({
-				top: offsetTop,
-				behavior: 'smooth',
-			});
+		const targetElement = document.getElementById(id.toLowerCase());
+		if (!targetElement) {
+			return;
 		}
+		const offsetTop = targetElement.offsetTop - 80;
+		window.scrollTo({
+			top: offsetTop,
+			behavior: 'smooth',
+		});
 	}
 }

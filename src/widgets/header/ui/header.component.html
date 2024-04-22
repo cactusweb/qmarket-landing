@@ -7,7 +7,7 @@
 			<ul class="tw-flex tw-flex-col md:tw-flex-row tw-text-lg tw-px-5 tw-py-3 tw-backdrop-blur-sm">
 				<li
 					*ngFor="let item of navItems"
-					[attr.data-section-id]="item"
+					[attr.data-section-id]="item.toLowerCase()"
 					class="menu-item tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
 					(click)="scrollTo(item)"
 				>

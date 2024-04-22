@@ -79,7 +79,7 @@ export class HorizontalScrollDirective implements AfterViewInit {
 
 	private startAutoScroll() {
 		this.scrollInterval = setInterval(() => {
-			this.el.nativeElement.scrollLeft += this.scrollSpeed;
+			this.el.nativeElement.scrollLeft += this.scrollSpeed / 2;
 
 			if (
 				this.el.nativeElement.scrollLeft >=
@@ -89,7 +89,7 @@ export class HorizontalScrollDirective implements AfterViewInit {
 			} else if (this.el.nativeElement.scrollLeft <= 0) {
 				this.scrollSpeed = -this.scrollSpeed;
 			}
-		}, 50);
+		}, 100);
 	}
 
 	private stopAutoScroll() {

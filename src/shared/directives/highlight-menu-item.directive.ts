@@ -24,18 +24,32 @@ export class HighlightMenuItemDirective {
 	}
 
 	getCurrentSectionId(): string {
-		const scrollPosition =
+		const scrollPositionTop =
 			window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-		const sections = document.querySelectorAll('.section');
+		const scrollPositionBottom = scrollPositionTop + window.innerHeight;
+
+		const sections = document.querySelectorAll('.section') as NodeListOf<HTMLElement>;
 
 		let currentSectionId = '';
 
 		sections.forEach((section) => {
-			const sectionElement = section as HTMLElement;
-			const sectionTop = sectionElement.offsetTop;
-			const sectionHeight = sectionElement.offsetHeight;
+			const sectionToTop = section.offsetTop;
+			const sectionHeight = section.offsetHeight;
+			const sectionToBottom = sectionToTop + sectionHeight;
 
-			if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+			const isSectionHalfInView =
+				scrollPositionTop < sectionToTop + sectionHeight / 2 &&
+				scrollPositionBottom > sectionToTop + sectionHeight;
+
+			const isSectionFullyInView =
+				scrollPositionTop > sectionToTop && scrollPositionBottom > sectionToBottom;
+
+			// if (section.id === 'faq')
+			// 	console.log(scrollPositionTop, scrollPositionBottom, sectionToTop, sectionToBottom);
+
+			// if ( scrollPosition )
+			console.log(section.id, isSectionHalfInView);
+			if (isSectionHalfInView || isSectionFullyInView) {
 				currentSectionId = section.getAttribute('id')!;
 			}
 		});
