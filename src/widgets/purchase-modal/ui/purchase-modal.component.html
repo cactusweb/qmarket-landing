@@ -26,16 +26,22 @@
 	</div>
 </div>
 
-<div class="tw-m-5 tw-p-5 card tw-flex tw-gap-5 tw-items-center">
-	<mat-icon svgIcon="discord"></mat-icon>
-	<div class="tw-flex tw-flex-col tw-gap-3">
-		<div class="tw-text-xl md:tw-text-2xl tw-leading-6">Discord</div>
-		<div class="tw-text-sm md:tw-text-base tw-leading-4 tw-text-second">
-			Join the server to buy the product
+<div class="tw-m-5 tw-p-5 card tw-flex tw-flex-col md:tw-flex-row tw-gap-5 tw-items-center">
+	<div class="tw-flex tw-items-center tw-gap-5 tw-self-start">
+		<mat-icon svgIcon="discord"></mat-icon>
+		<div class="tw-flex tw-flex-col tw-gap-2">
+			<div class="tw-text-xl md:tw-text-2xl tw-leading-6">Discord</div>
+			<div class="tw-text-sm md:tw-text-base tw-leading-4 tw-text-second">
+				Join the server to buy the product
+			</div>
 		</div>
 	</div>
 
-	<button class="tw-ml-auto" mat-mini-fab color="primary">
+	<button class="tw-ml-auto tw-w-full md:tw-hidden" mat-button color="primary">
+		<mat-icon svgIcon="arrow"></mat-icon>
+	</button>
+
+	<button class="tw-hidden md:tw-block tw-ml-auto tw-w-full" mat-mini-fab color="primary">
 		<mat-icon svgIcon="arrow"></mat-icon>
 	</button>
 </div>
@@ -49,7 +55,7 @@
 <div class="tw-m-5 tw-p-5 card tw-flex tw-flex-col tw-gap-5 tw-items-start">
 	<div class="tw-flex tw-gap-5 tw-items-center">
 		<mat-icon svgIcon="mail"></mat-icon>
-		<div class="tw-flex tw-flex-col tw-gap-3">
+		<div class="tw-flex tw-flex-col tw-gap-2">
 			<div class="tw-text-xl md:tw-text-2xl tw-leading-6">Leave a Request</div>
 			<div class="tw-text-sm md:tw-text-base tw-leading-4 tw-text-second">We will contact you!</div>
 		</div>
@@ -86,8 +92,24 @@
 
 		<div class="tw-text-base">Payment method</div>
 
-		<div class="form-group">
-			<label class="custom-checkbox">
+		<div class="form-group tw-flex-col md:tw-flex-row tw-flex tw-gap-2.5">
+			<label class="form-control">
+				<input
+					type="checkbox"
+					name="bankTransfer"
+					[(ngModel)]="formData.paymentMethod.bankTransfer"
+				/>
+				<span class="tw-flex tw-items-center tw-gap-3"
+					><mat-icon svgIcon="card"></mat-icon>Bank transfer</span
+				>
+			</label>
+			<label class="form-control">
+				<input type="checkbox" name="crypto" [(ngModel)]="formData.paymentMethod.crypto" />
+				<span class="tw-flex tw-items-center tw-gap-3"
+					><mat-icon svgIcon="crypto"></mat-icon>Crypto</span
+				>
+			</label>
+			<!-- <label class="custom-checkbox">
 				<span>One</span>
 				<input
 					type="checkbox"
@@ -96,7 +118,7 @@
 					[(ngModel)]="formData.paymentMethod.crypto"
 				/>
 				<span class="checkmark"></span>
-			</label>
+			</label> -->
 			<!-- <div class="custom-checkbox">
 				<input
 					type="checkbox"

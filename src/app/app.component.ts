@@ -51,5 +51,13 @@ export class AppComponent {
 			'burger',
 			this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/burger.svg')
 		);
+		this.matIconRegistry.addSvgIcon(
+			'crypto',
+			this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/crypto.svg')
+		);
+		this.matIconRegistry.addSvgIcon(
+			'card',
+			this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/card.svg')
+		);
 	}
 }
