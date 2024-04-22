@@ -1,0 +1,15 @@
+app-faq {
+	.mat-expansion-panel {
+		@apply tw-bg-main tw-bg-gradient-to-r tw-from-[#2F0D414D] tw-to-[#2F0D4199] tw-text-text tw-border tw-border-solid tw-border-border-second tw-rounded-2xl;
+		.mat-expansion-panel-header-title {
+			@apply tw-text-text tw-text-2xl;
+		}
+		.mat-expansion-panel-header {
+			@apply tw-p-5 tw-h-fit;
+		}
+
+		.mat-expansion-panel-body p {
+			@apply tw-text-xl tw-text-left tw-border-0 tw-border-l-2  tw-border-solid tw-border-l-second tw-pl-4;
+		}
+	}
+}
