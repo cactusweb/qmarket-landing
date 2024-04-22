@@ -24,6 +24,7 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
 	selector: 'app-purchase-modal',
@@ -46,7 +47,10 @@ import { FormsModule } from '@angular/forms';
 	encapsulation: ViewEncapsulation.None,
 })
 export class PurchaseModalComponent {
-	constructor(@Inject(MAT_DIALOG_DATA) public data: Card) {}
+	constructor(
+		@Inject(MAT_DIALOG_DATA) public data: Card,
+		private dialog: DialogRef
+	) {}
 
 	formData = {
 		messenger: '',
@@ -56,4 +60,8 @@ export class PurchaseModalComponent {
 			crypto: false,
 		},
 	};
+
+	close() {
+		this.dialog.close();
+	}
 }

@@ -48,6 +48,10 @@ body {
 		background-color: #0f0512 !important;
 	}
 
+	.cdk-overlay-pane.mat-mdc-dialog-panel {
+		max-width: 100vw;
+	}
+
 	input {
 		background-color: #0f051299;
 		height: 40px;

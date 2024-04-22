@@ -2,16 +2,18 @@
 	<header class="tw-flex tw-gap-4 tw-justify-start tw-items-center">
 		<img [src]="'assets/images/' + data.logo" alt="logo" />
 		<div>
-			<h2 class="tw-text-2xl">{{ data.name | uppercase }}</h2>
-			<h3 class="tw-text-base tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded">
+			<h2 class="tw-text-xl md:tw-text-2xl">{{ data.name | uppercase }}</h2>
+			<h3
+				class="tw-text-sm md:tw-text-base tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded"
+			>
 				{{ data.details | uppercase }}
 			</h3>
 		</div>
 	</header>
 
 	<div>
-		<span class="tw-text-3xl tw-mr-1">{{ data.price }}</span>
-		<span class="tw-text-base tw-opacity-30">/{{ data.period }}</span>
+		<span class="tw-text-xl md:tw-text-3xl tw-mr-1">{{ data.price }}</span>
+		<span class="tw-text-sm md:tw-text-base tw-opacity-30">/{{ data.period }}</span>
 	</div>
 
 	<ul class="tw-p-0 tw-m-0 tw-flex tw-flex-col tw-gap-2 tw-text-base">

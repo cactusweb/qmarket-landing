@@ -3,10 +3,41 @@
 		class="tw-h-full tw-mx-auto tw-px-10 tw-max-w-[1200px] tw-flex tw-justify-between tw-items-center"
 	>
 		<img src="assets/images/logo.png" alt="q-market" />
-		<nav class="tw-text-text">
-			<ul class="tw-flex tw-text-lg tw-px-5 tw-py-3">
-				<li *ngFor="let item of navItems" class="tw-px-5 tw-py-3 tw-cursor-pointer">{{ item }}</li>
+		<nav class="tw-hidden md:tw-w-fit md:tw-block tw-text-text">
+			<ul class="tw-flex tw-flex-col md:tw-flex-row tw-text-lg tw-px-5 tw-py-3 tw-backdrop-blur-sm">
+				<li
+					*ngFor="let item of navItems"
+					class="tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
+					(click)="scrollTo(item)"
+				>
+					{{ item }}
+				</li>
 			</ul>
 		</nav>
+
+		<mat-icon
+			*ngIf="isMenuOpen"
+			class="close-icon tw-cursor-pointer md:tw-hidden"
+			svgIcon="close"
+			(click)="toggleMenu()"
+		></mat-icon>
+
+		<mat-icon
+			*ngIf="!isMenuOpen"
+			class="close-icon tw-cursor-pointer md:tw-hidden"
+			svgIcon="burger"
+			(click)="toggleMenu()"
+		></mat-icon>
 	</div>
 </header>
+<nav *ngIf="isMenuOpen" class="tw-items-center tw-w-full md:tw-hidden tw-text-text">
+	<ul class="tw-flex tw-flex-col md:tw-flex-row tw-text-lg tw-px-5 tw-py-3 tw-backdrop-blur-sm">
+		<li
+			*ngFor="let item of navItems"
+			class="tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
+			(click)="scrollTo(item)"
+		>
+			{{ item }}
+		</li>
+	</ul>
+</nav>

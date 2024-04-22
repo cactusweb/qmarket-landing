@@ -1,4 +1,4 @@
-<section class="tw-text-text tw-pb-24">
+<section class="tw-text-text tw-pb-24 tw-mx-5 md:tw-mx-0">
 	<div class="tw-max-w-[840px] tw-mx-auto tw-text-center">
 		<h2 class="tw-text-3xl tw-text-text tw-mb-10">FAQ</h2>
 
@@ -11,7 +11,7 @@
 				(closed)="panel.open = false"
 			>
 				<mat-expansion-panel-header class="tw-flex tw-justify-between">
-					<mat-panel-title> {{ panel.title }}</mat-panel-title>
+					<mat-panel-title class="tw-text-start"> {{ panel.title }}</mat-panel-title>
 					<mat-panel-description class="tw-flex tw-justify-end tw-max-w-fit">
 						<button *ngIf="panel.open" mat-mini-fab color="primary">
 							<mat-icon svgIcon="minus"></mat-icon>

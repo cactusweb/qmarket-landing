@@ -1,32 +1,38 @@
 <div
 	class="tw-bg-modal-img tw-px-5 tw-py-6 tw-flex tw-justify-between tw-border-0 tw-border-solid tw-border-b tw-border-b-border-second"
 >
-	<h2 class="tw-m-0 tw-text-second tw-text-3xl">Purchase</h2>
-	<mat-icon class="tw-cursor-pointer" svgIcon="close"></mat-icon>
+	<h2 class="tw-m-0 tw-text-second tw-text-2xl md:tw-text-3xl">Purchase</h2>
+	<mat-icon class="tw-cursor-pointer" svgIcon="close" (click)="close()"></mat-icon>
 </div>
 
 <div class="tw-flex tw-gap-4 tw-justify-between tw-items-center tw-text-text tw-p-5">
 	<div class="tw-flex tw-gap-4 tw-justify-start tw-items-center">
 		<img [src]="'assets/images/' + data.logo" alt="logo" />
 		<div>
-			<h2 class="tw-text-2xl">{{ data.name | uppercase }}</h2>
-			<h3 class="tw-text-base tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded">
+			<h2 class="tw-text-xl md:tw-text-2xl">{{ data.name | uppercase }}</h2>
+			<h3
+				class="tw-text-sm md:tw-text-base tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded"
+			>
 				{{ data.details | uppercase }}
 			</h3>
 		</div>
 	</div>
 
-	<div>
-		<span class="tw-text-3xl tw-mr-1">{{ data.price }}</span>
-		<span class="tw-text-base tw-opacity-30">/{{ data.period }}</span>
+	<div class="tw-flex tw-flex-col md:tw-flex-row">
+		<span class="tw-text-xl tw-leading-5 md:tw-leading-6 md:tw-text-3xl tw-mr-1">{{
+			data.price
+		}}</span>
+		<span class="tw-text-base tw-leading-4 tw-opacity-30">/{{ data.period }}</span>
 	</div>
 </div>
 
 <div class="tw-m-5 tw-p-5 card tw-flex tw-gap-5 tw-items-center">
 	<mat-icon svgIcon="discord"></mat-icon>
 	<div class="tw-flex tw-flex-col tw-gap-3">
-		<div class="tw-text-2xl tw-leading-6">Discord</div>
-		<div class="tw-text-base tw-leading-4 tw-text-second">Join the server to buy the product</div>
+		<div class="tw-text-xl md:tw-text-2xl tw-leading-6">Discord</div>
+		<div class="tw-text-sm md:tw-text-base tw-leading-4 tw-text-second">
+			Join the server to buy the product
+		</div>
 	</div>
 
 	<button class="tw-ml-auto" mat-mini-fab color="primary">
@@ -44,8 +50,8 @@
 	<div class="tw-flex tw-gap-5 tw-items-center">
 		<mat-icon svgIcon="mail"></mat-icon>
 		<div class="tw-flex tw-flex-col tw-gap-3">
-			<div class="tw-text-2xl tw-leading-6">Leave a Request</div>
-			<div class="tw-text-base tw-leading-4 tw-text-second">We will contact you!</div>
+			<div class="tw-text-xl md:tw-text-2xl tw-leading-6">Leave a Request</div>
+			<div class="tw-text-sm md:tw-text-base tw-leading-4 tw-text-second">We will contact you!</div>
 		</div>
 	</div>
 

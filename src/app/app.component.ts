@@ -47,5 +47,9 @@ export class AppComponent {
 			'mail',
 			this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/mail.svg')
 		);
+		this.matIconRegistry.addSvgIcon(
+			'burger',
+			this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/burger.svg')
+		);
 	}
 }

@@ -1,0 +1,15 @@
+app-header {
+	rect {
+		color: #b12eff !important;
+		fill: #b12eff !important;
+	}
+
+	li {
+		color: #ebebeb;
+		text-decoration: none;
+
+		&:hover {
+			color: #b12eff;
+		}
+	}
+}

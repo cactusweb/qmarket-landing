@@ -83,10 +83,10 @@ export class HorizontalScrollDirective implements AfterViewInit {
 
 			if (
 				this.el.nativeElement.scrollLeft >=
-				this.el.nativeElement.scrollWidth - (this.el.nativeElement.clientWidth + 10)
+				this.el.nativeElement.scrollWidth - (this.el.nativeElement.clientWidth + 15)
 			) {
 				this.scrollSpeed = -this.scrollSpeed;
-			} else if (this.el.nativeElement.scrollLeft <= 0) {
+			} else if (this.el.nativeElement.scrollLeft <= 15) {
 				this.scrollSpeed = -this.scrollSpeed;
 			}
 		}, 50);
