@@ -2,8 +2,13 @@
 	<img class="tw-h-fit" [src]="'assets/images/' + avatar" alt="avatar" />
 
 	<div>
-		<span class="tw-text-[#5357AE] tw-text-xl tw-mr-2">{{ name }}</span>
-		<span class="tw-text-[#999999] tw-text-base">{{ date }}</span>
-		<p class="tw-text-xl tw-leading-5" [innerHTML]="text"></p>
+		<span
+			class="tw-text-[#5357AE] tw-text-base tw-leading-4 md:tw-text-xl md:tw-leading-5 tw-mr-2"
+			>{{ name }}</span
+		>
+		<span class="tw-text-[#999999] tw-text-xs tw-leading-3 md:tw-text-base md:tw-leading-4">{{
+			date
+		}}</span>
+		<p class="tw-text-base tw-leading-5 md:tw-text-xl md:tw-leading-6" [innerHTML]="text"></p>
 	</div>
 </div>

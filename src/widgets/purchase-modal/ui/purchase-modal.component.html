@@ -8,18 +8,18 @@
 <div class="tw-flex tw-gap-4 tw-justify-between tw-items-center tw-text-text tw-p-5">
 	<div class="tw-flex tw-gap-4 tw-justify-start tw-items-center">
 		<img [src]="'assets/images/' + data.logo" alt="logo" />
-		<div>
-			<h2 class="tw-text-xl md:tw-text-2xl">{{ data.name | uppercase }}</h2>
+		<div class="tw-flex tw-flex-col tw-gap-[5px]">
+			<h2 class="tw-text-xl tw-leading-5">{{ data.name | uppercase }}</h2>
 			<h3
-				class="tw-text-sm md:tw-text-base tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded"
+				class="tw-text-sm tw-leading-4 md:tw-text-base md:tw-leading-5 tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded"
 			>
 				{{ data.details | uppercase }}
 			</h3>
 		</div>
 	</div>
 
-	<div class="tw-flex tw-flex-col md:tw-flex-row">
-		<span class="tw-text-xl tw-leading-5 md:tw-leading-6 md:tw-text-3xl tw-mr-1">{{
+	<div class="tw-flex tw-flex-col md:tw-flex-row md:tw-items-end">
+		<span class="tw-text-xl tw-leading-5 md:tw-leading-[32px] md:tw-text-[32px] tw-mr-1">{{
 			data.price
 		}}</span>
 		<span class="tw-text-base tw-leading-4 tw-opacity-30">/{{ data.period }}</span>
@@ -30,8 +30,8 @@
 	<div class="tw-flex tw-items-center tw-gap-5 tw-self-start">
 		<mat-icon svgIcon="discord"></mat-icon>
 		<div class="tw-flex tw-flex-col tw-gap-2">
-			<div class="tw-text-xl md:tw-text-2xl tw-leading-6">Discord</div>
-			<div class="tw-text-sm md:tw-text-base tw-leading-4 tw-text-second">
+			<div class="tw-text-xl tw-leading-5">Discord</div>
+			<div class="tw-text-sm md:tw-text-base md:tw-leading-5 tw-leading-4 tw-text-second">
 				Join the server to buy the product
 			</div>
 		</div>
@@ -56,8 +56,10 @@
 	<div class="tw-flex tw-gap-5 tw-items-center">
 		<mat-icon svgIcon="mail"></mat-icon>
 		<div class="tw-flex tw-flex-col tw-gap-2">
-			<div class="tw-text-xl md:tw-text-2xl tw-leading-6">Leave a Request</div>
-			<div class="tw-text-sm md:tw-text-base tw-leading-4 tw-text-second">We will contact you!</div>
+			<div class="tw-text-xl tw-leading-5">Leave a Request</div>
+			<div class="tw-text-sm md:tw-text-base md:tw-leading-5 tw-leading-4 tw-text-second">
+				We will contact you!
+			</div>
 		</div>
 	</div>
 

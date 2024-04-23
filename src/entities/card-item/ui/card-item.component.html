@@ -1,10 +1,10 @@
 <article class="tw-text-text card tw-p-5 tw-flex tw-flex-col tw-gap-5 tw-h-full">
 	<header class="tw-flex tw-gap-4 tw-justify-start tw-items-center">
 		<img [src]="'assets/images/' + data.logo" alt="logo" />
-		<div>
-			<h2 class="tw-text-xl md:tw-text-2xl">{{ data.name | uppercase }}</h2>
+		<div class="tw-flex tw-flex-col tw-gap-[5px]">
+			<h2 class="tw-text-xl tw-leading-5">{{ data.name | uppercase }}</h2>
 			<h3
-				class="tw-text-sm md:tw-text-base tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded"
+				class="tw-text-sm tw-leading-4 md:tw-text-base md:tw-leading-5 tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded"
 			>
 				{{ data.details | uppercase }}
 			</h3>
@@ -12,14 +12,18 @@
 	</header>
 
 	<div>
-		<span class="tw-text-xl md:tw-text-3xl tw-mr-1">{{ data.price }}</span>
-		<span class="tw-text-sm md:tw-text-base tw-opacity-30">/{{ data.period }}</span>
+		<span class="tw-text-xl tw-leading-5 md:tw-text-[32px] md:tw-leading-[32px] tw-mr-[6px]">{{
+			data.price
+		}}</span>
+		<span class="tw-text-sm tw-leading-[14px] md:tw-text-base md:tw-leading-4 tw-opacity-30"
+			>/{{ data.period }}</span
+		>
 	</div>
 
-	<ul class="tw-p-0 tw-m-0 tw-flex tw-flex-col tw-gap-2 tw-text-base">
+	<ul class="tw-p-0 tw-m-0 tw-flex tw-flex-col tw-gap-2">
 		<li
 			*ngFor="let d of data.description"
-			class="tw-pl-2.5 tw-border-0 tw-border-l-2 tw-border-solid tw-border-l-second tw-leading-4"
+			class="tw-text-base tw-leading-[19px] tw-pl-2.5 tw-border-0 tw-border-l-2 tw-border-solid tw-border-l-second tw-leading-4"
 		>
 			{{ d }}
 		</li>
