@@ -44,6 +44,10 @@ body {
 		}
 	}
 
+	.mat-mdc-button .mat-icon {
+		width: 24px !important;
+	}
+
 	.mat-mdc-dialog-surface {
 		border-radius: 20px !important;
 		background-color: #0f0512 !important;
