@@ -16,4 +16,8 @@ app-header {
 	li.active {
 		color: #b12eff;
 	}
+
+	.menu-icon {
+		@apply tw-absolute tw-top-0 tw-left-0 -tw-translate-x-full -tw-translate-y-1/2;
+	}
 }

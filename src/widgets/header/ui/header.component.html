@@ -1,6 +1,6 @@
 <header class="tw-bg-[#0F0512CC] tw-h-20 tw-border-solid tw-border-b tw-border-b-border-second">
 	<div
-		class="tw-h-full tw-mx-auto tw-px-10 tw-max-w-[1200px] tw-flex tw-justify-between tw-items-center"
+		class="tw-h-full tw-mx-auto tw-px-5 tw-max-w-[1200px] tw-flex tw-justify-between tw-items-center"
 	>
 		<img src="assets/images/logo.png" alt="q-market" />
 		<nav class="tw-hidden md:tw-w-fit md:tw-block tw-text-text" appHighlightMenuItem>
@@ -16,17 +16,17 @@
 			</ul>
 		</nav>
 
-		<div class="tw-relative tw-h-7 tw-w-7 md:tw-hidden">
+		<div class="tw-relative tw-h-0 tw-w-0 md:tw-hidden">
 			<mat-icon
 				[@fadeOut]="isMenuOpen ? 'visible' : 'hidden'"
-				class="close-icon tw-cursor-pointer md:tw-hidden tw-absolute tw-top-0 tw-left-0"
+				class="menu-icon tw-cursor-pointer md:tw-hidden"
 				svgIcon="close"
 				(click)="toggleMenu()"
 			></mat-icon>
 
 			<mat-icon
 				[@fadeOut]="!isMenuOpen ? 'visible' : 'hidden'"
-				class="close-icon tw-cursor-pointer md:tw-hidden tw-scale-75 tw-absolute tw-top-0 tw-left-0"
+				class="menu-icon tw-cursor-pointer md:tw-hidden tw-scale-75"
 				svgIcon="burger"
 				(click)="toggleMenu()"
 			></mat-icon>
