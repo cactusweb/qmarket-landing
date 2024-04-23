@@ -1,12 +1,6 @@
-// .main {
-// 	background-image: url('/assets/images/background.png');
-// 	background-position: top center;
-// 	background-repeat: no-repeat;
-// }
-
-// main {
-// 	@apply tw-grid tw-gap-24  #{!important};
-// 	* {
-// 		@apply tw-grid;
-// 	}
-// }
+main {
+	@apply tw-grid tw-gap-24 tw-pb-24  #{!important};
+	* {
+		@apply tw-grid;
+	}
+}
