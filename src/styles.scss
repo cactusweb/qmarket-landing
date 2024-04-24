@@ -9,48 +9,14 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$q-market-primary: mat.define-palette(mat.$indigo-palette);
-$q-market-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$q-market-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$q-market-theme: mat.define-light-theme(
-	(
-		color: (
-			primary: $q-market-primary,
-			accent: $q-market-accent,
-			warn: $q-market-warn,
-		),
-		typography: mat.define-typography-config(),
-		density: 0,
-	)
-);
-
-$my-custom-level: mat.define-typography-level(
-	$font-family: Questrial,
-	$font-weight: 400,
-	$font-size: 1rem,
-	$line-height: 1,
-	$letter-spacing: normal,
-);
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($q-market-theme);
-
-/* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import './styles/reset';
+
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;1,300&display=swap');
 
 html,
 body {
@@ -65,10 +31,46 @@ body {
 	background-color: #0b0d0e;
 }
 
-* {
-	font-family: 'Questrial', sans-serif !important;
+.libre-franklin {
+	font-family: 'Libre Franklin', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
 }
+
+* {
+	font-family: 'Questrial', sans-serif;
+}
+
 @import 'shared/scss/reset';
 @import 'shared/scss/theme';
 @import 'shared/scss/scrollbar';
 @import 'shared/scss/checkbox';
+
+button {
+	@apply tw-p-0 #{!important};
+}
+
+.qm-button {
+	@apply tw-h-10 tw-p-0 tw-flex tw-content-center tw-items-center tw-justify-center;
+	@apply tw-rounded-[5px] tw-border tw-border-second tw-border-solid;
+	@apply tw-text-white tw-text-lg tw-leading-[19px] tw-font-normal;
+	@apply hover:tw-bg-second/20 tw-gap-2;
+	letter-spacing: 1px;
+	transition: 0.2s;
+}
+
+.qm-block {
+	@apply tw-grid md:tw-gap-10 tw-gap-5;
+
+	&_margined {
+		@apply tw-px-5;
+	}
+
+	&__title {
+		@apply tw-text-white tw-text-2xl tw-leading-6 md:tw-text-[32px] md:tw-leading-[32px] tw-text-center;
+	}
+	&__content {
+		@apply tw-max-w-[840px] tw-w-full;
+	}
+}
