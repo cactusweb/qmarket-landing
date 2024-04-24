@@ -19,8 +19,8 @@ module.exports = {
 				main: '840px',
 			},
 			backgroundImage: {
-				'main-img': "url('/assets/images/background.png')",
-				'mobile-img': "url('/assets/images/bg-mobile.png')",
+				'main-img': "url('/assets/images/background.webp')",
+				'mobile-img': "url('/assets/images/bg-mobile.webp')",
 				'modal-img': "url('/assets/images/modal-header-bg.webp')",
 			},
 		},
