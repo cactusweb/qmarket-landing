@@ -62,7 +62,7 @@ export class HighlightMenuItemDirective implements AfterViewInit {
 				const sectionToBottom = sectionToTop + sectionHeight;
 
 				/** Определяет видно ли секцию на странице хотя бы на половину */
-				const isSectionHalfInView = scrollPositionBottom > sectionToTop + (sectionHeight / 5) * 3.5;
+				const isSectionHalfInView = scrollPositionBottom > sectionToTop + (sectionHeight / 5) * 2;
 
 				/** Определяет полностью ли видно секцию на странице */
 				const isSectionFullyInView =

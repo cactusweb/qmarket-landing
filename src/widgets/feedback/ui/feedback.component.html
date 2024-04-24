@@ -1,34 +1,29 @@
-<h2
-	class="tw-text-center tw-text-2xl tw-leading-6 md:tw-text-[32px] md:tw-leading-[32px] tw-text-text tw-mb-10"
->
-	Feedback
-</h2>
+<section class="qm-block">
+	<h2 class="qm-block__title">Feedback</h2>
 
-<section
-	class="feedback tw-overflow-x-auto tw-bg-[#2F0D4133] tw-p-5 tw-border-solid tw-border tw-border-border-second"
-	horizontalScroll
->
-	<div class="tw-flex tw-gap-5 tw-items-stretch tw-min-w-fit">
-		@for (item of splitArray(feedbackData).firstHalf; track item; let i = $index) {
-			<app-feedback-item
-				[ngClass]="{ 'tw-ml-40': i === 0 }"
-				class="tw-min-w-fit"
-				[avatar]="item.avatar"
-				[name]="item.name"
-				[date]="item.date"
-				[text]="item.text"
-			></app-feedback-item>
-		}
-	</div>
-	<div class="tw-flex tw-gap-5 tw-items-stretch tw-mt-5 tw-min-w-fit">
-		@for (item of splitArray(feedbackData).secondHalf; track item; let i = $index) {
-			<app-feedback-item
-				class="tw-min-w-fit"
-				[avatar]="item.avatar"
-				[name]="item.name"
-				[date]="item.date"
-				[text]="item.text"
-			></app-feedback-item>
-		}
+	<div class="feedback" horizontalScroll>
+		<div class="feedback__row">
+			@for (item of splitArray(feedbackData).firstHalf; track item; let i = $index) {
+				<app-feedback-item
+					[ngClass]="{ 'tw-ml-40': i === 0 }"
+					class="tw-min-w-fit"
+					[avatar]="item.avatar"
+					[name]="item.name"
+					[date]="item.date"
+					[text]="item.text"
+				/>
+			}
+		</div>
+		<div class="feedback__row tw-mt-5">
+			@for (item of splitArray(feedbackData).secondHalf; track item; let i = $index) {
+				<app-feedback-item
+					class="tw-min-w-fit"
+					[avatar]="item.avatar"
+					[name]="item.name"
+					[date]="item.date"
+					[text]="item.text"
+				></app-feedback-item>
+			}
+		</div>
 	</div>
 </section>

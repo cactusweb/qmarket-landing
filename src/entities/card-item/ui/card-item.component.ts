@@ -1,24 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Card } from '../../../widgets/card-list/ui/card-list.component';
 
-import {
-	MatDialog,
-	MAT_DIALOG_DATA,
-	MatDialogRef,
-	MatDialogTitle,
-	MatDialogContent,
-	MatDialogActions,
-	MatDialogClose,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { PurchaseModalComponent } from '../../../widgets/purchase-modal';
 
 @Component({
 	selector: 'app-card-item',
 	standalone: true,
-	imports: [CommonModule, MatButtonModule, MatIconModule],
+	imports: [CommonModule, MatIconModule, NgOptimizedImage],
 	templateUrl: './card-item.component.html',
 	styleUrl: './card-item.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,9 +21,12 @@ export class CardItemComponent {
 	constructor(public dialog: MatDialog) {}
 
 	openDialog(): void {
-		const dialogRef = this.dialog.open(PurchaseModalComponent, {
+		this.dialog.open(PurchaseModalComponent, {
 			data: this.data,
-			width: '660px',
+			autoFocus: false,
+			restoreFocus: false,
+			maxWidth: '660px',
+			width: '100%',
 			maxHeight: '100vh',
 		});
 	}

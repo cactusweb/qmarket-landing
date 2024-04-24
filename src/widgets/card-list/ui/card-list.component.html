@@ -1,10 +1,6 @@
-<section>
-	<h2
-		class="tw-text-text tw-text-2xl tw-leading-6 md:tw-text-[32px] md:tw-leading-[32px] tw-text-center tw-mb-10"
-	>
-		Pricing
-	</h2>
-	<div class="tw-max-w-[840px] product-grid">
+<section class="qm-block qm-block_margined">
+	<h2 class="qm-block__title">Pricing</h2>
+	<div class="qm-block__content product-grid">
 		@for (item of data; track $index) {
 			<app-card-item class="product-card" [data]="item"></app-card-item>
 		}

@@ -3,51 +3,6 @@ body {
 		box-sizing: border-box;
 	}
 
-	button.mat-mdc-fab {
-		border-radius: 5px !important;
-		background-color: inherit;
-		border: 1px solid #b12eff;
-		height: 40px;
-
-		&:hover {
-			background-color: #b12eff33;
-		}
-	}
-
-	button.mat-mdc-mini-fab {
-		display: flex !important;
-		border-radius: 5px !important;
-		background-color: inherit;
-		border: 1px solid #b12eff;
-		height: 40px;
-		width: 40px;
-
-		&:hover {
-			background-color: #b12eff33;
-		}
-	}
-
-	button.mat-mdc-button {
-		border-radius: 5px !important;
-		background-color: inherit;
-		border: 1px solid #b12eff;
-		height: 40px;
-		color: #ebebeb !important;
-
-		padding-left: 36px !important;
-		padding-right: 36px !important;
-
-		font-family: 'Questrial', sans-serif !important;
-
-		&:hover {
-			background-color: #b12eff33;
-		}
-	}
-
-	.mat-mdc-button .mat-icon {
-		width: 24px !important;
-	}
-
 	.mat-mdc-dialog-surface {
 		border-radius: 20px !important;
 		background-color: #0f0512 !important;
@@ -64,16 +19,24 @@ body {
 		border: none;
 		color: #ebebeb;
 		padding-left: 10px;
+		font-size: 16px;
+
+		outline: none !important;
+		@apply tw-border tw-border-solid tw-border-transparent;
+
+		&.ng-touched.ng-invalid {
+			@apply tw-border-[#FF4A4A];
+		}
+
+		transition: border-color 0.2s;
+		&:focus {
+			border-color: #b12eff !important;
+		}
 	}
 
 	input::placeholder {
 		color: #ebebeb;
 		opacity: 30%;
-		font-size: 16px;
-	}
-
-	input:focus {
-		outline: #b12eff 1px solid !important;
 	}
 
 	/* Chrome, Safari, Edge, Opera */
@@ -87,16 +50,13 @@ body {
 	input[type='number'] {
 		-moz-appearance: textfield;
 	}
+
+	.cdk-overlay-dark-backdrop {
+		background-color: rgba(15, 5, 18, 0.8);
+		@apply tw-backdrop-blur-[2px];
+	}
 }
 
 .card {
-	@apply tw-bg-main tw-bg-gradient-to-r tw-from-[#2F0D414D] tw-to-[#2F0D4199] tw-text-text tw-border tw-border-solid tw-border-border-second tw-rounded-2xl;
-}
-
-.mat-mdc-fab.mat-primary,
-.mat-mdc-mini-fab.mat-primary {
-	--mat-fab-foreground-color: rgba(255, 255, 255, 0) !important;
-	--mat-fab-state-layer-color: rgba(255, 255, 255, 0) !important;
-	--mat-fab-small-foreground-color: rgba(255, 255, 255, 0) !important;
-	--mat-fab-small-state-layer-color: rgba(255, 255, 255, 0) !important;
+	@apply tw-bg-main tw-bg-gradient-to-r tw-from-[#2F0D414D] tw-to-[#2F0D4199] tw-text-white tw-border tw-border-solid tw-border-border-second tw-rounded-2xl;
 }

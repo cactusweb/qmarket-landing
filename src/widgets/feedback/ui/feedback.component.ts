@@ -1,20 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { FeedbackItemComponent } from '../../../entities/feedback-item';
 import { HorizontalScrollDirective } from '../../../shared/directives/horizontal-scroll.directive';
 
 @Component({
 	selector: 'app-feedback',
 	standalone: true,
-	imports: [
-		CommonModule,
-		MatButtonModule,
-		MatIconModule,
-		FeedbackItemComponent,
-		HorizontalScrollDirective,
-	],
+	imports: [CommonModule, FeedbackItemComponent, HorizontalScrollDirective],
 	templateUrl: './feedback.component.html',
 	styleUrl: './feedback.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

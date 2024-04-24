@@ -1,8 +1,8 @@
 app-faq {
 	.mat-expansion-panel {
-		@apply tw-bg-main tw-bg-gradient-to-r tw-from-[#2F0D414D] tw-to-[#2F0D4199] tw-text-text tw-border tw-border-solid tw-border-border-second tw-rounded-2xl;
+		@apply tw-bg-main tw-bg-gradient-to-r tw-from-[#2F0D414D] tw-to-[#2F0D4199] tw-text-white tw-border tw-border-solid tw-border-border-second tw-rounded-2xl;
 		.mat-expansion-panel-header-title {
-			@apply tw-text-text tw-text-lg tw-leading-[18px] md:tw-text-xl md:tw-leading-5;
+			@apply tw-text-white tw-text-lg tw-leading-[18px] md:tw-text-xl md:tw-leading-5;
 		}
 		.mat-expansion-panel-header {
 			@apply tw-p-5 tw-h-fit;
@@ -24,5 +24,16 @@ app-faq {
 	.mat-expansion-panel:not(.mat-expanded)
 		.mat-expansion-panel-header:not([aria-disabled='true']):hover {
 		background: none;
+	}
+
+	button {
+		@apply tw-absolute  tw-w-full;
+		mat-icon {
+			@apply tw-absolute tw-top-1/2 tw-left-1/2 -tw-translate-x-1/2 -tw-translate-y-1/2;
+			transition: 0.3s ease-out;
+			&.hidden {
+				@apply tw-opacity-0;
+			}
+		}
 	}
 }

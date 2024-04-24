@@ -1,138 +1,157 @@
-<div
-	class="tw-bg-modal-img tw-px-5 tw-py-6 tw-flex tw-justify-between tw-border-0 tw-border-solid tw-border-b tw-border-b-border-second"
->
-	<h2 class="tw-m-0 tw-text-second tw-text-2xl md:tw-text-3xl">Purchase</h2>
-	<mat-icon class="tw-cursor-pointer" svgIcon="close" (click)="close()"></mat-icon>
+<div class="header">
+	<h2 class="header__title">Purchase</h2>
+	<button aria-label="Close modal" mat-dialog-close class="header__btn">
+		<mat-icon class="tw-cursor-pointer" svgIcon="close" />
+	</button>
 </div>
 
-<div class="tw-flex tw-gap-4 tw-justify-between tw-items-center tw-text-text tw-p-5">
-	<div class="tw-flex tw-gap-4 tw-justify-start tw-items-center">
-		<img [src]="'assets/images/' + data.logo" alt="logo" />
+<div class="product">
+	<div class="product__main">
+		<img
+			[ngSrc]="'assets/products/' + data.logo"
+			width="53"
+			height="53"
+			priority
+			alt=""
+			aria-hidden="true"
+		/>
 		<div class="tw-flex tw-flex-col tw-gap-[5px]">
-			<h2 class="tw-text-xl tw-leading-5">{{ data.name | uppercase }}</h2>
-			<h3
-				class="tw-text-sm tw-leading-4 md:tw-text-base md:tw-leading-5 tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded"
-			>
+			<h3 class="product__title">{{ data.name | uppercase }}</h3>
+			<p class="product__subtitle libre-franklin">
 				{{ data.details | uppercase }}
-			</h3>
+			</p>
 		</div>
 	</div>
 
-	<div class="tw-flex tw-flex-col md:tw-flex-row md:tw-items-end">
-		<span class="tw-text-xl tw-leading-5 md:tw-leading-[32px] md:tw-text-[32px] tw-mr-1">{{
-			data.price
-		}}</span>
-		<span class="tw-text-base tw-leading-4 tw-opacity-30">/{{ data.period }}</span>
-	</div>
+	<p class="price">
+		<span class="price__amount">
+			{{ data.price }}
+		</span>
+		<span class="price__per"> /{{ data.per }} </span>
+	</p>
 </div>
 
-<div class="tw-m-5 tw-p-5 card tw-flex tw-flex-col md:tw-flex-row tw-gap-5 tw-items-center">
-	<div class="tw-flex tw-items-center tw-gap-5 tw-self-start">
-		<mat-icon svgIcon="discord"></mat-icon>
-		<div class="tw-flex tw-flex-col tw-gap-2">
-			<div class="tw-text-xl tw-leading-5">Discord</div>
-			<div class="tw-text-sm md:tw-text-base md:tw-leading-5 tw-leading-4 tw-text-second">
-				Join the server to buy the product
+<div class="contact-opts">
+	<a
+		class="card product-card"
+		id="discord-card"
+		href="https://discord.gg/qmarket"
+		target="_blank"
+		rel="noopener"
+		aria-label="invite to discord server"
+	>
+		<div class="product-card__main" id="discord">
+			<mat-icon svgIcon="discord" />
+			<div class="product-card__title-container">
+				<h4 class="product-card__title">Discord</h4>
+				<p class="libre-franklin product-card__subtitle">Join the server to buy the product</p>
 			</div>
 		</div>
-	</div>
 
-	<button class="tw-ml-auto tw-w-full md:tw-hidden" mat-button color="primary">
-		<mat-icon svgIcon="arrow"></mat-icon>
-	</button>
+		<button
+			class="qm-button product-card__btn"
+			color="primary"
+			type="button"
+			aria-label="Buy via discord server"
+		>
+			<mat-icon svgIcon="arrow" />
+		</button>
+	</a>
 
-	<button class="tw-hidden md:tw-block tw-ml-auto tw-w-full" mat-mini-fab color="primary">
-		<mat-icon svgIcon="arrow"></mat-icon>
-	</button>
-</div>
-
-<div class="tw-flex tw-gap-5 tw-items-center tw-opacity-50 tw-px-5">
-	<div class="tw-w-full tw-border-0 tw-border-solid tw-border-b tw-border-b-second"></div>
-	<span class="tw-text-lg tw-text-second">OR</span>
-	<div class="tw-w-full tw-border-0 tw-border-solid tw-border-b tw-border-b-second"></div>
-</div>
-
-<div class="tw-m-5 tw-p-5 card tw-flex tw-flex-col tw-gap-5 tw-items-start">
-	<div class="tw-flex tw-gap-5 tw-items-center">
-		<mat-icon svgIcon="mail"></mat-icon>
-		<div class="tw-flex tw-flex-col tw-gap-2">
-			<div class="tw-text-xl tw-leading-5">Leave a Request</div>
-			<div class="tw-text-sm md:tw-text-base md:tw-leading-5 tw-leading-4 tw-text-second">
-				We will contact you!
+	<div class="card">
+		<div class="product-card tw-cursor-pointer" (click)="togglePanelState()">
+			<div class="product-card__main">
+				<mat-icon svgIcon="mail" />
+				<div class="product-card__title-container">
+					<h4 class="product-card__title">Leave a Request</h4>
+					<p class="product-card__subtitle">We will contact you!</p>
+				</div>
 			</div>
+
+			<button
+				class="qm-button product-card__btn expand-btn"
+				type="button"
+				aria-label="Expand purchase form"
+			>
+				<mat-icon
+					svgIcon="plus"
+					[ngClass]="panelState === PanelStates.COLLAPSED ? 'visible' : 'hidden'"
+				/>
+				<mat-icon
+					svgIcon="minus"
+					[ngClass]="panelState === PanelStates.EXPANDED ? 'visible' : 'hidden'"
+				/>
+			</button>
 		</div>
+
+		<form [formGroup]="form" (ngSubmit)="onSubmit()" [@panel]="panelState">
+			<div class="tw-grid md:tw-grid-cols-[1fr_1fr] tw-gap-[15px]">
+				<div class="form-control-container">
+					<label class="libre-franklin" for="contact">Contact</label>
+					<input
+						type="text"
+						class="form-control"
+						id="contact"
+						autocomplete="off"
+						placeholder="Messanger / E-mail"
+						formControlName="contact"
+					/>
+				</div>
+
+				<div class="form-control-container">
+					<label class="libre-franklin" for="accountsCount">Quantity</label>
+
+					<input
+						type="number"
+						class="form-control"
+						id="accountsCount"
+						autocomplete="off"
+						placeholder="Number of accounts"
+						formControlName="accountsCount"
+						required
+					/>
+				</div>
+			</div>
+
+			<div class="form-control-container">
+				<p class="libre-franklin">Payment method</p>
+
+				<div class="tw-flex-col md:tw-flex-row tw-flex tw-gap-2.5">
+					<label class="form-control tw-cursor-pointer">
+						<input type="radio" value="bank" formControlName="payment" />
+						<span class="radio-label">
+							<mat-icon svgIcon="card" />
+							Bank transfer
+						</span>
+					</label>
+					<label class="form-control tw-cursor-pointer">
+						<input type="radio" value="crypto" formControlName="payment" />
+						<span class="radio-label">
+							<mat-icon svgIcon="crypto" />
+							Crypto
+						</span>
+					</label>
+				</div>
+			</div>
+			<button
+				class="tw-w-full qm-button tw-mt-[15px] disabled:tw-opacity-60"
+				[disabled]="(formState$ | async) === FormStates.LOADING"
+			>
+				@switch (formState$ | async) {
+					@case (FormStates.DEFAULT) {
+						Send
+					}
+					@case (FormStates.LOADING) {
+						Sending...
+					}
+					@case (FormStates.SUCCESS) {
+						Successful
+					}
+					@case (FormStates.FAILED) {
+						Failed. Try again
+					}
+				}
+			</button>
+		</form>
 	</div>
-
-	<form class="tw-w-full tw-flex tw-flex-col tw-gap-2.5" #myForm="ngForm">
-		<div class="tw-text-base">Contact</div>
-
-		<div class="form-group">
-			<input
-				type="text"
-				class="form-control"
-				id="messenger"
-				name="messenger"
-				placeholder="Messenger / E-mail"
-				[(ngModel)]="formData.messenger"
-				required
-			/>
-		</div>
-
-		<div class="tw-text-base">Quantity</div>
-
-		<div class="form-group">
-			<input
-				type="number"
-				class="form-control"
-				id="numAccounts"
-				name="numAccounts"
-				placeholder="Number of accounts"
-				[(ngModel)]="formData.numAccounts"
-				required
-			/>
-		</div>
-
-		<div class="tw-text-base">Payment method</div>
-
-		<div class="form-group tw-flex-col md:tw-flex-row tw-flex tw-gap-2.5">
-			<label class="form-control">
-				<input
-					type="checkbox"
-					name="bankTransfer"
-					[(ngModel)]="formData.paymentMethod.bankTransfer"
-				/>
-				<span class="tw-flex tw-items-center tw-gap-3"
-					><mat-icon svgIcon="card"></mat-icon>Bank transfer</span
-				>
-			</label>
-			<label class="form-control">
-				<input type="checkbox" name="crypto" [(ngModel)]="formData.paymentMethod.crypto" />
-				<span class="tw-flex tw-items-center tw-gap-3"
-					><mat-icon svgIcon="crypto"></mat-icon>Crypto</span
-				>
-			</label>
-			<!-- <label class="custom-checkbox">
-				<span>One</span>
-				<input
-					type="checkbox"
-					checked="checked"
-					name="crypto"
-					[(ngModel)]="formData.paymentMethod.crypto"
-				/>
-				<span class="checkmark"></span>
-			</label> -->
-			<!-- <div class="custom-checkbox">
-				<input
-					type="checkbox"
-					id="crypto"
-					name="crypto"
-					[(ngModel)]="formData.paymentMethod.crypto"
-				/>
-				<label for="crypto">Crypto</label>
-			</div> -->
-		</div>
-	</form>
-
-	<button class="tw-w-full tw-text-lg" mat-button>Send</button>
 </div>
-<div></div>

@@ -1,10 +1,8 @@
-<header class="tw-bg-[#0F0512CC] tw-h-20 tw-border-solid tw-border-b tw-border-b-border-second">
-	<div
-		class="tw-h-full tw-mx-auto tw-px-5 tw-max-w-[1200px] tw-flex tw-justify-between tw-items-center"
-	>
-		<img src="assets/images/logo.png" alt="q-market" />
-		<nav class="tw-hidden md:tw-w-fit md:tw-block tw-text-text" appHighlightMenuItem>
-			<ul class="tw-flex tw-flex-col md:tw-flex-row tw-text-lg tw-px-5 tw-py-3">
+<nav>
+	<div class="nav-container">
+		<img ngSrc="assets/logo.webp" alt="q-market" height="40" width="222" priority />
+		<div class="tw-hidden md:tw-w-fit md:tw-block tw-text-white" appHighlightMenuItem>
+			<ul class="menu" role="menu">
 				<li
 					*ngFor="let item of navItems"
 					[attr.data-section-id]="item.toLowerCase()"
@@ -14,34 +12,38 @@
 					{{ item }}
 				</li>
 			</ul>
-		</nav>
+		</div>
 
-		<div class="tw-relative tw-h-0 tw-w-0 md:tw-hidden">
+		<button class="tw-relative tw-h-10 tw-w-10 md:tw-hidden">
 			<mat-icon
-				[@fadeOut]="isMenuOpen ? 'visible' : 'hidden'"
-				class="menu-icon tw-cursor-pointer md:tw-hidden"
+				[class.menu-icon_hidden]="!isMenuOpen"
+				class="menu-icon"
 				svgIcon="close"
 				(click)="toggleMenu()"
-			></mat-icon>
+			/>
 
 			<mat-icon
-				[@fadeOut]="!isMenuOpen ? 'visible' : 'hidden'"
-				class="menu-icon tw-cursor-pointer md:tw-hidden tw-scale-75"
+				[class.menu-icon_hidden]="isMenuOpen"
+				class="menu-icon tw-scale-75"
 				svgIcon="burger"
 				(click)="toggleMenu()"
-			></mat-icon>
-		</div>
+			/>
+		</button>
 	</div>
-</header>
-<nav *ngIf="isMenuOpen" class="tw-items-center tw-w-full md:tw-hidden tw-text-text">
-	<ul class="tw-flex tw-flex-col md:tw-flex-row tw-text-lg tw-px-5 tw-py-3 tw-backdrop-blur-sm">
-		<li
-			*ngFor="let item of navItems"
-			[attr.data-section-id]="item"
-			class="menu-item tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
-			(click)="scrollTo(item)"
-		>
-			{{ item }}
-		</li>
-	</ul>
 </nav>
+
+@if (isMenuOpen) {
+	<div class="mob-menu-wrapper" (click)="toggleMenu()">
+		<ul class="menu tw-py-10" role="menu">
+			<li
+				*ngFor="let item of navItems"
+				[attr.data-section-id]="item"
+				class="tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
+				(click)="scrollTo(item)"
+			>
+				{{ item }}
+			</li>
+		</ul>
+	</div>
+}
+<!-- -->

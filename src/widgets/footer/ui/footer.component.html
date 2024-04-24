@@ -1,21 +1,42 @@
-<footer
-	class="tw-bg-[#2F0D4133] tw-h-fit tw-border-solid tw-border-t tw-border-t-border-second tw-mx-5 md:tw-mx-0 tw-pt-5 tw-pb-8"
->
-	<div
-		class="tw-h-full tw-mx-auto tw-max-w-[840px] tw-flex md:tw-justify-between tw-items-center tw-flex-col md:tw-flex-row tw-gap-10"
-	>
-		<img src="assets/images/logo.png" alt="q-market" />
-
-		<div class="tw-flex tw-gap-5">
-			<button mat-fab color="primary">
-				<mat-icon svgIcon="discord"></mat-icon>
-			</button>
-			<button mat-fab color="primary">
-				<mat-icon svgIcon="twitter"></mat-icon>
-			</button>
-			<button mat-fab color="primary">
-				<mat-icon svgIcon="telegram"></mat-icon>
-			</button>
+<footer>
+	<div class="qm-block__content">
+		<div class="tw-grid tw-gap-6">
+			<img ngSrc="/assets/logo.webp" alt="q-market" class="tw-w-full" width="240" height="40" />
+			<p class="designed md:tw-block tw-hidden">
+				Designed by
+				<a
+					href="https://vk.com/cactusweb"
+					href="https://discord.gg/DkzbcX9qDN"
+					rel="noopener"
+					target="_blank"
+				>
+					cactus.web</a
+				>
+			</p>
 		</div>
+
+		<div class="tw-flex tw-gap-5 tw-justify-between">
+			<a href="https://discord.gg/qmarket" target="_blank" rel="noopener" class="qm-button">
+				<mat-icon svgIcon="discord" />
+			</a>
+			<a href="https://twitter.com/QMarket_" target="_blank" rel="noopener" class="qm-button">
+				<mat-icon svgIcon="twitter" />
+			</a>
+			<a href="https://t.me/Moverwhale" target="_blank" rel="noopener" class="qm-button">
+				<mat-icon svgIcon="telegram" />
+			</a>
+		</div>
+
+		<p class="designed md:tw-hidden tw-block tw-text-center">
+			Designed by
+			<a
+				href="https://vk.com/cactusweb"
+				href="https://discord.gg/DkzbcX9qDN"
+				rel="noopener"
+				target="_blank"
+			>
+				cactus.web</a
+			>
+		</p>
 	</div>
 </footer>
