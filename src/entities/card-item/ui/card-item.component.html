@@ -10,19 +10,19 @@
 			aria-hidden="true"
 		/>
 		<div class="card__title-container">
-			<h3 class="tw-text-xl tw-leading-5">{{ data.name | uppercase }}</h3>
-			<p class="card__subtitle">
+			<h3 class="tw-text-xl tw-leading-5 tw-font-normal">{{ data.name | uppercase }}</h3>
+			<p class="card__subtitle libre-franklin">
 				{{ data.details | uppercase }}
 			</p>
 		</div>
 	</div>
 
-	<div class="card__price-container">
-		<span class="card__price">
+	<p class="price">
+		<span class="price__amount">
 			{{ data.price }}
 		</span>
-		<span class="card__price-per"> /{{ data.per }} </span>
-	</div>
+		<span class="price__per"> /{{ data.per }} </span>
+	</p>
 
 	<ul class="features">
 		@for (feature of data.description; track $index) {
@@ -32,5 +32,12 @@
 		}
 	</ul>
 
-	<button class="qm-button tw-w-full tw-mt-auto" (click)="openDialog()">Purchase</button>
+	<button
+		class="qm-button tw-w-full tw-mt-auto"
+		(click)="openDialog()"
+		type="button"
+		aria-label="Open purchase form"
+	>
+		Purchase
+	</button>
 </div>

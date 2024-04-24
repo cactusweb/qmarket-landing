@@ -1,4 +1,6 @@
 app-header {
+	@apply tw-w-full tw-fixed tw-z-50 tw-top-0 tw-backdrop-blur-sm;
+
 	rect {
 		color: #b12eff !important;
 		fill: #b12eff !important;
@@ -7,6 +9,7 @@ app-header {
 	li {
 		color: #ebebeb;
 		text-decoration: none;
+		transition: 0.2s;
 
 		&:hover {
 			color: #b12eff;
@@ -18,6 +21,31 @@ app-header {
 	}
 
 	.menu-icon {
-		@apply tw-absolute tw-top-0 tw-left-0 -tw-translate-x-full -tw-translate-y-1/2;
+		@apply tw-absolute tw-top-1/2 tw-left-1/2 -tw-translate-x-1/2 -tw-translate-y-1/2;
+		transition: 0.3s ease-out;
+		&_hidden {
+			@apply tw-opacity-0;
+		}
+	}
+
+	.menu {
+		@apply tw-flex tw-flex-col md:tw-flex-row tw-text-lg tw-py-3;
+	}
+
+	.nav-container {
+		@apply tw-h-full tw-mx-auto tw-px-5 tw-max-w-[1200px] tw-flex tw-justify-between tw-items-center;
+	}
+
+	nav {
+		@apply tw-bg-[#0F0512CC] tw-h-20 tw-border-solid tw-border-b tw-border-b-border-second;
+	}
+
+	.mob-menu-wrapper {
+		@apply tw-items-center tw-w-full md:tw-hidden tw-text-white tw-h-screen;
+		background-color: #0f051280;
+
+		.menu {
+			@apply tw-border-0 tw-border-b tw-border-solid tw-border-[#2F0D41];
+		}
 	}
 }

@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CardItemComponent } from '../../../entities/card-item';
 
@@ -16,7 +15,7 @@ export interface Card {
 @Component({
 	selector: 'app-card-list',
 	standalone: true,
-	imports: [CommonModule, MatButtonModule, MatIconModule, CardItemComponent],
+	imports: [CommonModule, MatIconModule, CardItemComponent],
 	templateUrl: './card-list.component.html',
 	styleUrl: './card-list.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,7 +23,7 @@ export interface Card {
 export class CardListComponent {
 	data: Card[] = [
 		{
-			logo: 'tm.webp',
+			logo: 'tm-1.webp',
 			name: 'Ticketmaster',
 			details: 'aged accounts',
 			price: '$8,4',

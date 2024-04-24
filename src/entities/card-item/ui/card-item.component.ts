@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Card } from '../../../widgets/card-list/ui/card-list.component';
 
@@ -21,9 +21,12 @@ export class CardItemComponent {
 	constructor(public dialog: MatDialog) {}
 
 	openDialog(): void {
-		const dialogRef = this.dialog.open(PurchaseModalComponent, {
+		this.dialog.open(PurchaseModalComponent, {
 			data: this.data,
-			width: '660px',
+			autoFocus: false,
+			restoreFocus: false,
+			maxWidth: '660px',
+			width: '100%',
 			maxHeight: '100vh',
 		});
 	}

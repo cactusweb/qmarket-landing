@@ -13,8 +13,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import './styles/reset';
-
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;1,300&display=swap');
 
@@ -45,7 +43,7 @@ body {
 @import 'shared/scss/reset';
 @import 'shared/scss/theme';
 @import 'shared/scss/scrollbar';
-@import 'shared/scss/checkbox';
+@import 'shared/scss/radio';
 
 button {
 	@apply tw-p-0 #{!important};
@@ -68,7 +66,7 @@ button {
 	}
 
 	&__title {
-		@apply tw-text-white tw-text-2xl tw-leading-6 md:tw-text-[32px] md:tw-leading-[32px] tw-text-center;
+		@apply tw-text-white tw-text-2xl tw-leading-6 md:tw-text-[32px] md:tw-leading-[32px] tw-text-center tw-font-normal;
 	}
 	&__content {
 		@apply tw-max-w-[840px] tw-w-full;

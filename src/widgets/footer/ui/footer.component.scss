@@ -12,3 +12,12 @@ footer {
 	@apply tw-grid tw-gap-y-10 md:tw-grid-flow-col tw-items-center tw-mx-auto;
 	@apply md:tw-justify-between tw-justify-center;
 }
+
+.designed {
+	@apply tw-text-sm tw-leading-[10px];
+	color: #ebebeb40;
+	a {
+		transition: 0.2s;
+		@apply hover:tw-text-second hover:tw-underline;
+	}
+}

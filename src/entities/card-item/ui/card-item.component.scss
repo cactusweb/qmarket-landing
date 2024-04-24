@@ -16,17 +16,17 @@
 	&__img {
 		@apply tw-w-[63px] tw-h-[63px] tw-rounded-[5px];
 	}
+}
 
-	&__price-container {
-		@apply tw-flex tw-justify-start tw-gap-1.5;
-	}
+.price {
+	@apply tw-flex tw-justify-start tw-gap-1.5;
 
-	&__price {
+	&__amount {
 		@apply tw-text-xl tw-leading-5 md:tw-text-[32px] md:tw-leading-[32px];
 	}
 
-	&__price-per {
-		@apply tw-text-sm tw-leading-[14px] md:tw-text-base md:tw-leading-4 tw-opacity-30 tw-self-end tw-mb-1;
+	&__per {
+		@apply tw-text-sm tw-leading-[14px] md:tw-text-base md:tw-leading-4 tw-opacity-30 tw-self-end md:tw-mb-1;
 	}
 }
 
