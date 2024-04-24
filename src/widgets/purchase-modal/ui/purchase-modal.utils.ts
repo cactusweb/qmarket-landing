@@ -8,7 +8,7 @@ export function whBuilder(
 		content: '@everyone',
 		embeds: [
 			{
-				title: `New feedback by product **${productName}**`,
+				title: `New form by product **${productName}**`,
 				color: 11677439,
 				fields: [
 					{
