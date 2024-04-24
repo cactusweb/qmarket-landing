@@ -66,6 +66,17 @@
 
 .product-card {
 	@apply tw-p-5 tw-grid tw-grid-flow-col tw-justify-between tw-items-center tw-gap-2.5;
+
+	&#discord-card {
+		@media screen and (max-width: 420px) {
+			@apply tw-grid-flow-row tw-justify-stretch tw-gap-y-5;
+
+			button {
+				@apply tw-w-full;
+			}
+		}
+	}
+
 	&__main {
 		@apply tw-flex tw-items-center tw-gap-5;
 	}
@@ -75,11 +86,11 @@
 	}
 
 	&__title {
-		@apply tw-text-xl tw-leading-5 tw-font-normal;
+		@apply tw-text-xl tw-leading-[14px] md:tw-leading-5 tw-font-normal;
 	}
 
 	&__subtitle {
-		@apply tw-text-sm md:tw-text-base md:tw-leading-5 tw-leading-4 tw-text-second;
+		@apply tw-text-sm md:tw-text-base md:tw-leading-5 tw-leading-[10px] tw-text-second;
 	}
 
 	&__btn {
@@ -89,7 +100,6 @@
 	&:hover &__btn {
 		@apply tw-bg-second/20;
 	}
-
 }
 
 .expand-btn {
