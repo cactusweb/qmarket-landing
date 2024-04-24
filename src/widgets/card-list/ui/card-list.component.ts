@@ -9,7 +9,7 @@ export interface Card {
 	name: string;
 	details: string;
 	price: string;
-	period: string;
+	per: string;
 	description: string[];
 }
 
@@ -28,7 +28,7 @@ export class CardListComponent {
 			name: 'Ticketmaster',
 			details: 'aged accounts',
 			price: '$8,4',
-			period: 'per 1',
+			per: 'per 1',
 			description: [
 				'Age 2002-2018',
 				'Forwarding included',
@@ -41,15 +41,45 @@ export class CardListComponent {
 		{
 			logo: 'tmh.png',
 			name: 'Ticketmaster',
-			details: 'aCCOUNTS WITH HISTORY',
+			details: 'Accounts with history',
 			price: '$10,9',
-			period: 'per 1',
+			per: 'per 1',
 			description: [
 				'Age 2002-2018',
 				'Forwarding included',
 				'Full email access',
 				'Random orders amount',
 				'Untested accounts ONLY',
+				'1 month guarantee',
+			],
+		},
+		{
+			logo: 'tmh.png',
+			name: 'GMAIL',
+			details: 'Forwarded',
+			price: '$89,9',
+			per: 'per 100',
+			description: [
+				'Age 1 month+',
+				'Mixed regions',
+				'With 2FA security',
+				'Full email access',
+				'Fwd to hotmail',
+				'1 month guarantee',
+			],
+		},
+		{
+			logo: 'tmh.png',
+			name: 'HOTMAIL',
+			details: 'Forwarded',
+			price: '$19,9',
+			per: 'per 100',
+			description: [
+				'Age 1 month+',
+				'Mixed regions',
+				'With 2FA security',
+				'Full email access',
+				'Fwd to your email / domain',
 				'1 month guarantee',
 			],
 		},
