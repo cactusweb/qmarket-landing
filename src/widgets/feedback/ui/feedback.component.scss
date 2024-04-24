@@ -1,7 +1,12 @@
 .feedback {
+	@apply tw-overflow-x-auto tw-bg-[#2F0D4133] tw-p-5 tw-border-solid tw-border tw-border-border-second;
 	&::-webkit-scrollbar {
 		display: none;
 	}
 	-ms-overflow-style: none;
 	scrollbar-width: none;
+
+	&__row {
+		@apply tw-flex tw-gap-5 tw-items-stretch tw-min-w-fit;
+	}
 }
