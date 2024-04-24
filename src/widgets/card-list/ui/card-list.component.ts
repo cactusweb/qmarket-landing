@@ -24,7 +24,7 @@ export interface Card {
 export class CardListComponent {
 	data: Card[] = [
 		{
-			logo: 'tm.png',
+			logo: 'tm.webp',
 			name: 'Ticketmaster',
 			details: 'aged accounts',
 			price: '$8,4',
@@ -39,7 +39,7 @@ export class CardListComponent {
 			],
 		},
 		{
-			logo: 'tmh.png',
+			logo: 'tm-2.webp',
 			name: 'Ticketmaster',
 			details: 'Accounts with history',
 			price: '$10,9',
@@ -54,7 +54,7 @@ export class CardListComponent {
 			],
 		},
 		{
-			logo: 'tmh.png',
+			logo: 'gmail.webp',
 			name: 'GMAIL',
 			details: 'Forwarded',
 			price: '$89,9',
@@ -69,7 +69,7 @@ export class CardListComponent {
 			],
 		},
 		{
-			logo: 'tmh.png',
+			logo: 'hotmail.webp',
 			name: 'HOTMAIL',
 			details: 'Forwarded',
 			price: '$19,9',

@@ -1,12 +1,13 @@
 <div class="card">
 	<div class="card__header">
 		<img
-			[ngSrc]="'assets/images/' + data.logo"
+			[ngSrc]="'assets/products/' + data.logo"
 			width="63"
 			height="63"
 			loading="lazy"
 			alt=""
 			class="card__img"
+			aria-hidden="true"
 		/>
 		<div class="card__title-container">
 			<h3 class="tw-text-xl tw-leading-5">{{ data.name | uppercase }}</h3>
