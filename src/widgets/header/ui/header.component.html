@@ -1,10 +1,13 @@
 <nav>
 	<div class="nav-container">
-		<img ngSrc="assets/logo.webp" alt="q-market" height="40" width="222" priority />
+		<a href="/" aria-label="reload page">
+			<img ngSrc="assets/logo.webp" alt="q-market" height="40" width="222" priority />
+		</a>
 		<div class="tw-hidden md:tw-w-fit md:tw-block tw-text-white" appHighlightMenuItem>
 			<ul class="menu" role="menu">
 				<li
 					*ngFor="let item of navItems"
+					role="menuitem"
 					[attr.data-section-id]="item.toLowerCase()"
 					class="menu-item tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
 					(click)="scrollTo(item)"
@@ -40,6 +43,7 @@
 				[attr.data-section-id]="item"
 				class="tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
 				(click)="scrollTo(item)"
+				role="menuitem"
 			>
 				{{ item }}
 			</li>

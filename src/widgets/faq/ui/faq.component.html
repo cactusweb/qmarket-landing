@@ -13,7 +13,10 @@
 					<mat-panel-title class="tw-text-start"> {{ panel.title }}</mat-panel-title>
 					<mat-panel-description class="tw-flex tw-justify-end tw-max-w-fit">
 						<div class="tw-relative tw-w-10 tw-h-10">
-							<button class="qm-button">
+							<button
+								class="qm-button"
+								[attr.aria-label]="(panel.open ? 'Collapse' : 'Expand') + 'panel'"
+							>
 								<mat-icon svgIcon="plus" [ngClass]="!panel.open ? 'visible' : 'hidden'" />
 								<mat-icon svgIcon="minus" [ngClass]="panel.open ? 'visible' : 'hidden'" />
 							</button>
