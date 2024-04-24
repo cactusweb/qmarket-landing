@@ -8,7 +8,7 @@
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
 		"serve:ssr:q-market": "node dist/q-market/server/server.mjs",
-		"deploy": "npm i && ng build; pm2 delete q-market.store; pm2 start npm --name 'q-market.store' -- run 'serve:ssr:q-market'"
+		"deploy": "npm i && npm run build; pm2 delete q-market.store; pm2 start npm --name 'q-market.store' -- run 'serve:ssr:q-market'"
 	},
 	"private": true,
 	"dependencies": {
