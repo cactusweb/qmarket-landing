@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../../../widgets/header';
 import { FooterComponent } from '../../../widgets/footer';
@@ -26,8 +26,4 @@ import { CardListComponent } from '../../../widgets/card-list';
 	styleUrl: './layout-page.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutPageComponent implements OnInit, OnDestroy {
-	ngOnInit(): void {}
-
-	ngOnDestroy(): void {}
-}
+export class LayoutPageComponent {}
