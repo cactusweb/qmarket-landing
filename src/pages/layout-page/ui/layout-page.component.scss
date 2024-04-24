@@ -1,5 +1,5 @@
 main {
-	@apply tw-bg-main tw-bg-mobile-img md:tw-bg-main-img tw-bg-contain tw-bg-no-repeat;
+	@apply tw-bg-main tw-bg-contain tw-bg-no-repeat;
 	@apply tw-grid md:tw-gap-24 tw-gap-20 tw-pb-24 tw-mt-20;
 	* {
 		@apply tw-grid;
