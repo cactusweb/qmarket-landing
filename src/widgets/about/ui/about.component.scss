@@ -1,0 +1,16 @@
+section {
+	@apply tw-mx-auto tw-text-center tw-flex tw-flex-col tw-justify-items-center tw-px-5 md:tw-px-0;
+	@apply tw-grid tw-gap-5 tw-text-white tw-pt-[100px];
+}
+
+h1 {
+	@apply tw-text-2xl tw-leading-6 md:tw-text-5xl md:tw-leading-[48px];
+}
+
+p {
+	@apply tw-text-base tw-leading-5 md:tw-text-lg md:tw-leading-[22px] tw-max-w-[480px] tw-w-full;
+}
+
+a {
+	@apply tw-mt-2 tw-max-w-[230px] tw-w-full;
+}
