@@ -1,1 +1,39 @@
+.card {
+	@apply tw-text-white tw-p-5 tw-flex tw-flex-col tw-gap-5 tw-h-full;
 
+	&__header {
+		@apply tw-flex tw-gap-4 tw-justify-start tw-items-center;
+	}
+
+	&__title-container {
+		@apply tw-flex tw-flex-col tw-gap-[5px];
+	}
+
+	&__subtitle {
+		@apply tw-text-sm tw-leading-4 md:tw-text-base md:tw-leading-5 tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded;
+	}
+
+	&__img {
+		@apply tw-w-[63px] tw-h-[63px] tw-rounded-[5px];
+	}
+
+	&__price-container {
+		@apply tw-flex tw-justify-start tw-gap-1.5;
+	}
+
+	&__price {
+		@apply tw-text-xl tw-leading-5 md:tw-text-[32px] md:tw-leading-[32px];
+	}
+
+	&__price-per {
+		@apply tw-text-sm tw-leading-[14px] md:tw-text-base md:tw-leading-4 tw-opacity-30 tw-self-end tw-mb-1;
+	}
+}
+
+.features {
+	@apply tw-p-0 tw-m-0 tw-flex tw-flex-col tw-gap-2;
+
+	&__item {
+		@apply tw-text-base tw-leading-5 tw-pl-2.5 tw-border-0 tw-border-l-2 tw-border-solid tw-border-l-second;
+	}
+}
