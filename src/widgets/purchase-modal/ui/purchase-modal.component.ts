@@ -109,7 +109,10 @@ export class PurchaseModalComponent {
 		const { contact, accountsCount, payment } = this.form.value;
 
 		this.http
-			.post(WH_URL, whBuilder(contact!, accountsCount!, payment!, this.data.name))
+			.post(
+				WH_URL,
+				whBuilder(contact!, accountsCount!, payment!, this.data.nameForWh || this.data.name)
+			)
 			.subscribe({
 				next: () => this.formState$.next(FormStates.SUCCESS),
 				error: () => this.formState$.next(FormStates.FAILED),

@@ -6,6 +6,7 @@ import { CardItemComponent } from '../../../entities/card-item';
 export interface Card {
 	logo: string;
 	name: string;
+	nameForWh?: string;
 	details: string;
 	price: string;
 	per: string;
@@ -26,6 +27,7 @@ export class CardListComponent {
 			logo: 'tm-1.webp',
 			name: 'Ticketmaster',
 			details: 'aged accounts',
+			nameForWh: 'Ticketmaster regular',
 			price: '$8,4',
 			per: 'per 1',
 			description: [
@@ -40,6 +42,7 @@ export class CardListComponent {
 		{
 			logo: 'tm-2.webp',
 			name: 'Ticketmaster',
+			nameForWh: 'Ticketmaster history',
 			details: 'Accounts with history',
 			price: '$10,9',
 			per: 'per 1',
