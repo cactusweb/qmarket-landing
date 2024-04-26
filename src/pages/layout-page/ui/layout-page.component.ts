@@ -21,7 +21,6 @@ import { CardListComponent } from '../../../widgets/card-list';
 		FeedbackComponent,
 		CardListComponent,
 	],
-	providers: [],
 	templateUrl: './layout-page.component.html',
 	styleUrl: './layout-page.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

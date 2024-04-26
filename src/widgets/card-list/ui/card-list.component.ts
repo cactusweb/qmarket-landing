@@ -11,6 +11,7 @@ export interface Card {
 	price: string;
 	per: string;
 	description: string[];
+	goalName: string;
 }
 
 @Component({
@@ -38,6 +39,7 @@ export class CardListComponent {
 				'Untested accounts ONLY',
 				'1 month guarantee',
 			],
+			goalName: 'form_submit_ticketmaster_aged_account',
 		},
 		{
 			logo: 'tm-2.webp',
@@ -54,6 +56,7 @@ export class CardListComponent {
 				'Untested accounts ONLY',
 				'1 month guarantee',
 			],
+			goalName: 'form_submit_ticketmaster_account_with_history',
 		},
 		{
 			logo: 'gmail.webp',
@@ -69,6 +72,7 @@ export class CardListComponent {
 				'Fwd to hotmail',
 				'1 month guarantee',
 			],
+			goalName: 'form_submit_gmail',
 		},
 		{
 			logo: 'hotmail.webp',
@@ -84,6 +88,7 @@ export class CardListComponent {
 				'Fwd to your email / domain',
 				'1 month guarantee',
 			],
+			goalName: 'form_submit_hotmail',
 		},
 	];
 }

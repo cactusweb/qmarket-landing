@@ -16,6 +16,7 @@ import { BehaviorSubject } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { WH_URL, whBuilder } from './purchase-modal.utils';
+import { YandexMetrikaService } from '../../../shared/services/yandex-metrika.service';
 
 enum PanelStates {
 	COLLAPSED = 'COLLAPSED',
@@ -83,7 +84,8 @@ export class PurchaseModalComponent {
 	constructor(
 		@Inject(MAT_DIALOG_DATA) public data: Card,
 		private dialog: DialogRef,
-		private http: HttpClient
+		private http: HttpClient,
+		private yandexMetrika: YandexMetrikaService
 	) {}
 
 	close() {
@@ -114,7 +116,10 @@ export class PurchaseModalComponent {
 				whBuilder(contact!, accountsCount!, payment!, this.data.nameForWh || this.data.name)
 			)
 			.subscribe({
-				next: () => this.formState$.next(FormStates.SUCCESS),
+				next: () => {
+					this.formState$.next(FormStates.SUCCESS);
+					this.yandexMetrika.reachGoal(this.data.goalName);
+				},
 				error: () => this.formState$.next(FormStates.FAILED),
 			});
 	}
