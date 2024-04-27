@@ -2,6 +2,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Card } from '../../card-list/ui/card-list.component';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 import { MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
 import {
@@ -41,6 +42,7 @@ enum FormStates {
 		ReactiveFormsModule,
 		NgOptimizedImage,
 		HttpClientModule,
+		TextFieldModule,
 	],
 	templateUrl: './purchase-modal.component.html',
 	styleUrl: './purchase-modal.component.scss',
@@ -71,6 +73,7 @@ export class PurchaseModalComponent {
 		contact: new FormControl('', Validators.required),
 		accountsCount: new FormControl('', Validators.required),
 		payment: new FormControl('bank', Validators.required),
+		comment: new FormControl(''),
 	});
 
 	panelState = PanelStates.COLLAPSED;
@@ -108,12 +111,18 @@ export class PurchaseModalComponent {
 		}
 
 		this.formState$.next(FormStates.LOADING);
-		const { contact, accountsCount, payment } = this.form.value;
+		const { contact, accountsCount, payment, comment } = this.form.value;
 
 		this.http
 			.post(
 				WH_URL,
-				whBuilder(contact!, accountsCount!, payment!, this.data.nameForWh || this.data.name)
+				whBuilder(
+					contact!,
+					accountsCount!,
+					payment!,
+					comment,
+					this.data.nameForWh || this.data.name
+				)
 			)
 			.subscribe({
 				next: () => {

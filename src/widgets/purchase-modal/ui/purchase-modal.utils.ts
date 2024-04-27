@@ -2,6 +2,7 @@ export function whBuilder(
 	contact: string,
 	quantity: string,
 	paymentMethod: string,
+	comment: string | null | undefined,
 	productName: string
 ) {
 	return {
@@ -29,6 +30,12 @@ export function whBuilder(
 						value: quantity,
 						inline: true,
 					},
+					...[
+						{
+							name: 'Comment',
+							value: comment,
+						},
+					].filter((val) => Boolean(val.value)),
 				],
 				footer: {
 					text: 'Sent from Q-market.store',

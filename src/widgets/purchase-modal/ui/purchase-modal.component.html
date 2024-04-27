@@ -84,7 +84,7 @@
 			</button>
 		</div>
 
-		<form [formGroup]="form" (ngSubmit)="onSubmit()" [@panel]="panelState">
+		<form [formGroup]="form" (ngSubmit)="onSubmit()" [@panel]="panelState" autocomplete="off">
 			<div class="tw-grid md:tw-grid-cols-[1fr_1fr] tw-gap-[15px]">
 				<div class="form-control-container">
 					<label class="libre-franklin" for="contact">Contact</label>
@@ -133,6 +133,22 @@
 					</label>
 				</div>
 			</div>
+
+			<div class="form-control-container">
+				<label class="libre-franklin" for="comment">Comment</label>
+				<textarea
+					name="comment"
+					class="form-control"
+					placeholder="Any additional info"
+					id="comment"
+					formControlName="comment"
+					cdkTextareaAutosize
+					#autosize="cdkTextareaAutosize"
+					cdkAutosizeMinRows="1"
+					cdkAutosizeMaxRows="6"
+				></textarea>
+			</div>
+
 			<button
 				class="tw-w-full qm-button tw-mt-[15px] disabled:tw-opacity-60"
 				[disabled]="(formState$ | async) === FormStates.LOADING"

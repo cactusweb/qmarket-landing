@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-	width: 6px;
+	@apply tw-w-1 md:tw-w-1.5;
 }
 
 ::-webkit-scrollbar-thumb {

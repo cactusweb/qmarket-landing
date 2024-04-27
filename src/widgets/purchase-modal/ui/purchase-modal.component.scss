@@ -12,6 +12,10 @@
 	@apply tw-flex tw-items-center tw-gap-3;
 }
 
+textarea {
+	@apply tw-py-2.5;
+}
+
 .header {
 	@apply tw-bg-modal-img tw-bg-cover tw-bg-center;
 	@apply tw-flex tw-justify-between tw-items-center tw-content-center;
