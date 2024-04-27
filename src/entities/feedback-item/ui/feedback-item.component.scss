@@ -1,1 +1,28 @@
+.img-wrapper {
+	@apply md:tw-h-[54px] md:tw-w-[54px] tw-w-10 tw-h-10 tw-rounded-full tw-relative tw-grid tw-overflow-hidden;
 
+	img {
+		@apply tw-w-full tw-h-full tw-object-cover;
+	}
+}
+
+.feedback {
+	@apply tw-flex md:tw-gap-[18px] tw-gap-2.5 tw-p-2.5 tw-items-center tw-w-fit tw-pr-10 tw-min-w-fit;
+
+	&__body {
+		@apply tw-grid tw-gap-1.5;
+	}
+
+	&__name {
+		@apply tw-text-base tw-leading-4 md:tw-text-xl md:tw-leading-5 tw-mr-2;
+		@apply tw-font-bold tw-text-[#5357AE];
+	}
+
+	&__date {
+		@apply tw-text-[#999999] tw-text-xs tw-leading-3 md:tw-text-base md:tw-leading-4;
+	}
+
+	&__text {
+		@apply tw-text-base tw-leading-5 md:tw-text-xl md:tw-leading-6 first-letter:tw-uppercase;
+	}
+}

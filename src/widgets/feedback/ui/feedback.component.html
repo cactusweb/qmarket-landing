@@ -3,26 +3,13 @@
 
 	<div class="feedback" horizontalScroll>
 		<div class="feedback__row">
-			@for (item of splitArray(feedbackData).firstHalf; track item; let i = $index) {
-				<app-feedback-item
-					[ngClass]="{ 'tw-ml-40': i === 0 }"
-					class="tw-min-w-fit"
-					[avatar]="item.avatar"
-					[name]="item.name"
-					[date]="item.date"
-					[text]="item.text"
-				/>
+			@for (item of FIRST_ROW_FEEDBACKS; track item.name; let i = $index) {
+				<app-feedback-item [ngClass]="{ 'tw-ml-40': i === 0 }" class="tw-min-w-fit" [item]="item" />
 			}
 		</div>
 		<div class="feedback__row tw-mt-5">
-			@for (item of splitArray(feedbackData).secondHalf; track item; let i = $index) {
-				<app-feedback-item
-					class="tw-min-w-fit"
-					[avatar]="item.avatar"
-					[name]="item.name"
-					[date]="item.date"
-					[text]="item.text"
-				></app-feedback-item>
+			@for (item of SECOND_ROW_FEEDBACKS; track item.name; let i = $index) {
+				<app-feedback-item class="tw-min-w-fit" [item]="item" />
 			}
 		</div>
 	</div>
