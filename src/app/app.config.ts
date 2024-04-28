@@ -6,6 +6,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { UtmService } from '../shared/services/utm.service';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
@@ -13,5 +14,6 @@ export const appConfig: ApplicationConfig = {
 		provideClientHydration(),
 		provideAnimations(),
 		provideHttpClient(withFetch()), provideAnimationsAsync(),
+		UtmService,
 	],
 };

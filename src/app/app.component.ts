@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
+import { UtmService } from '../shared/services/utm.service';
 
 @Component({
 	selector: 'app-root',
@@ -13,7 +14,8 @@ import { MatIconRegistry } from '@angular/material/icon';
 export class AppComponent {
 	constructor(
 		private matIconRegistry: MatIconRegistry,
-		private domSanitizer: DomSanitizer
+		private domSanitizer: DomSanitizer,
+		private utmService: UtmService
 	) {
 		this.matIconRegistry.addSvgIcon(
 			'discord',
