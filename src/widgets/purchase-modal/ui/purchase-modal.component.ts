@@ -13,11 +13,14 @@ import {
 	Validators,
 } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, filter, take } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { WH_URL, whBuilder } from './purchase-modal.utils';
 import { YandexMetrikaService } from '../../../shared/services/yandex-metrika.service';
+import { API_ENDPOINTS } from '../../../shared/api/api.consts';
+import { UtmService } from '../../../shared/services/utm.service';
+import { DsJoinerService } from '../../../shared/services/ds-joiner.service';
 
 enum PanelStates {
 	COLLAPSED = 'COLLAPSED',
@@ -44,6 +47,7 @@ enum FormStates {
 		HttpClientModule,
 		TextFieldModule,
 	],
+	providers: [DsJoinerService],
 	templateUrl: './purchase-modal.component.html',
 	styleUrl: './purchase-modal.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -71,8 +75,8 @@ enum FormStates {
 export class PurchaseModalComponent {
 	readonly form = new FormGroup({
 		contact: new FormControl('', Validators.required),
-		accountsCount: new FormControl('', Validators.required),
-		payment: new FormControl('bank', Validators.required),
+		quantity: new FormControl('', Validators.required),
+		paymentMethod: new FormControl('bank', Validators.required),
 		comment: new FormControl(''),
 	});
 
@@ -83,13 +87,25 @@ export class PurchaseModalComponent {
 	readonly FormStates = FormStates;
 
 	readonly loading$ = new BehaviorSubject(false);
+	readonly joinLoading$ = this.dsJoiner.loading$;
 
 	constructor(
 		@Inject(MAT_DIALOG_DATA) public data: Card,
 		private dialog: DialogRef,
 		private http: HttpClient,
-		private yandexMetrika: YandexMetrikaService
+		private yandexMetrika: YandexMetrikaService,
+		private utm: UtmService,
+		private dsJoiner: DsJoinerService
 	) {}
+
+	onDiscordJoin() {
+		this.joinLoading$
+			.pipe(
+				take(1),
+				filter((loading) => !loading)
+			)
+			.subscribe(() => this.dsJoiner.join());
+	}
 
 	close() {
 		this.dialog.close();
@@ -111,19 +127,13 @@ export class PurchaseModalComponent {
 		}
 
 		this.formState$.next(FormStates.LOADING);
-		const { contact, accountsCount, payment, comment } = this.form.value;
 
 		this.http
-			.post(
-				WH_URL,
-				whBuilder(
-					contact!,
-					accountsCount!,
-					payment!,
-					comment,
-					this.data.nameForWh || this.data.name
-				)
-			)
+			.post(API_ENDPOINTS.PURCHASE, {
+				product: this.data.nameForWh || this.data.name,
+				...this.form.value,
+				utm: this.utm.getUtm()?.data,
+			})
 			.subscribe({
 				next: () => {
 					this.formState$.next(FormStates.SUCCESS);

@@ -58,11 +58,17 @@ export class UtmService {
 		if (!queryParams[UtmTags.SOURCE]) {
 			return;
 		}
+
+		const data: Record<string, string> = {};
+
 		Object.keys(queryParams)
-			.filter((key) => !utmTags.includes(key))
-			.forEach((key: string) => delete queryParams[key]);
+			.filter((key) => utmTags.includes(key))
+			.forEach((key: string) => {
+				data[key.replace('utm_', '')] = queryParams[key];
+			});
+
 		const expiresIn = Date.now() + 1000 * 60 * 60 * 24 * 7; // плюс неделя
-		localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify({ data: queryParams, expiresIn }));
+		localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify({ data, expiresIn }));
 		this.clearQueryParams();
 	}
 

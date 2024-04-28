@@ -32,13 +32,13 @@
 </div>
 
 <div class="contact-opts">
-	<a
+	<div
+		role="button"
 		class="card product-card"
+		[class.tw-cursor-pointer]="!(joinLoading$ | async)"
 		id="discord-card"
-		href="https://discord.gg/qmarket"
-		target="_blank"
-		rel="noopener"
 		aria-label="invite to discord server"
+		(click)="onDiscordJoin()"
 	>
 		<div class="product-card__main" id="discord">
 			<mat-icon svgIcon="discord" />
@@ -53,10 +53,15 @@
 			color="primary"
 			type="button"
 			aria-label="Buy via discord server"
+			[disabled]="joinLoading$ | async"
 		>
-			<mat-icon svgIcon="arrow" />
+			@if (!(joinLoading$ | async)) {
+				<mat-icon svgIcon="arrow" />
+			} @else {
+				...
+			}
 		</button>
-	</a>
+	</div>
 
 	<div class="card">
 		<div class="product-card tw-cursor-pointer" (click)="togglePanelState()">
@@ -99,15 +104,15 @@
 				</div>
 
 				<div class="form-control-container">
-					<label class="libre-franklin" for="accountsCount">Quantity</label>
+					<label class="libre-franklin" for="quantity">Quantity</label>
 
 					<input
 						type="number"
 						class="form-control"
-						id="accountsCount"
+						id="quantity"
 						autocomplete="off"
 						placeholder="Number of accounts"
-						formControlName="accountsCount"
+						formControlName="quantity"
 						required
 					/>
 				</div>
@@ -118,14 +123,14 @@
 
 				<div class="tw-flex-col md:tw-flex-row tw-flex tw-gap-2.5">
 					<label class="form-control tw-cursor-pointer">
-						<input type="radio" value="bank" formControlName="payment" />
+						<input type="radio" value="bank" formControlName="paymentMethod" />
 						<span class="radio-label">
 							<mat-icon svgIcon="card" />
 							Bank transfer
 						</span>
 					</label>
 					<label class="form-control tw-cursor-pointer">
-						<input type="radio" value="crypto" formControlName="payment" />
+						<input type="radio" value="crypto" formControlName="paymentMethod" />
 						<span class="radio-label">
 							<mat-icon svgIcon="crypto" />
 							Crypto
