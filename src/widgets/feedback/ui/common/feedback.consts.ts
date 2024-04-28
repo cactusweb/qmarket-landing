@@ -48,7 +48,7 @@ export const FIRST_ROW_FEEDBACKS: Feedback[] = [
 		name: 'evo',
 		date: '20.04.2024 1:34',
 		content:
-			'Extremely fast delivery & outstanding customer service... will definitely do business with again!',
+			'Extremely fast delivery & outstanding customer service...\n will definitely do business with again!',
 	},
 	{
 		avatar: '9.webp',
@@ -127,7 +127,7 @@ export const FIRST_ROW_FEEDBACKS: Feedback[] = [
 		name: 'Dave',
 		date: '05.03.2024 21:51',
 		content:
-			'Exactly what I asked for and been helpful throughout the process. Especially fast delivery this time around! Thanks',
+			'Exactly what I asked for and been helpful throughout the process. \nEspecially fast delivery this time around! Thanks',
 	},
 	{
 		avatar: '22.webp',
@@ -209,7 +209,7 @@ export const SECOND_ROW_FEEDBACKS: Feedback[] = [
 		name: 'bjevryday',
 		date: '22.01.2024 19:38',
 		content:
-			'Made an original order of 250 acts, and when 9 of them had an incorrect password, they replaced them quickly and efficiently 👍🏾',
+			'Made an original order of 250 acts, and when 9 of them had an incorrect password, \nthey replaced them quickly and efficiently 👍🏾',
 	},
 	{
 		avatar: '35.webp',
@@ -228,7 +228,7 @@ export const SECOND_ROW_FEEDBACKS: Feedback[] = [
 		name: 'UofODuck',
 		date: '17.01.2024 19:35',
 		content:
-			'Quick and efficient process. No issues with delivery. Accounts seem to be in working order. Would order again.',
+			'Quick and efficient process. No issues with delivery. \nAccounts seem to be in working order. Would order again.',
 	},
 	{
 		avatar: '38.webp',
@@ -265,7 +265,7 @@ export const SECOND_ROW_FEEDBACKS: Feedback[] = [
 		name: 'bjevryday',
 		date: '28.12.2023 9:11',
 		content:
-			'Delivery is supposed to be 3-4 days, got my order with a bit over a week delay. No big deal, customer service is good and spreadsheet is professional and complete.',
+			'Delivery is supposed to be 3-4 days, got my order with a bit over a week delay.\n No big deal, customer service is good and spreadsheet is professional and complete.',
 	},
 	{
 		avatar: '44.webp',

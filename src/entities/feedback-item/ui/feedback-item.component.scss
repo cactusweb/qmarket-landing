@@ -23,6 +23,6 @@
 	}
 
 	&__text {
-		@apply tw-text-base tw-leading-5 md:tw-text-xl md:tw-leading-6 first-letter:tw-uppercase;
+		@apply tw-text-base tw-leading-5 md:tw-text-xl md:tw-leading-6 first-letter:tw-uppercase tw-whitespace-pre-line;
 	}
 }
