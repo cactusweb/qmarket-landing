@@ -29,7 +29,7 @@ export class CardListComponent {
 			name: 'Ticketmaster',
 			details: 'aged accounts',
 			nameForWh: 'Ticketmaster regular',
-			price: '$8,4',
+			price: '$4,9',
 			per: 'per 1',
 			description: [
 				'Age 2002-2018',
@@ -46,7 +46,7 @@ export class CardListComponent {
 			name: 'Ticketmaster',
 			nameForWh: 'Ticketmaster history',
 			details: 'Accounts with history',
-			price: '$10,9',
+			price: '$6,9',
 			per: 'per 1',
 			description: [
 				'Age 2002-2018',
