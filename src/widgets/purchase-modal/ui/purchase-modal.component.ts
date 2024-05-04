@@ -17,7 +17,7 @@ import { BehaviorSubject, filter, take } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { WH_URL, whBuilder } from './purchase-modal.utils';
-import { YandexMetrikaService } from '../../../shared/services/yandex-metrika.service';
+import { MetrikaService } from '../../../shared/services/metrika.service';
 import { API_ENDPOINTS } from '../../../shared/api/api.consts';
 import { UtmService } from '../../../shared/services/utm.service';
 import { DsJoinerService } from '../../../shared/services/ds-joiner.service';
@@ -93,7 +93,7 @@ export class PurchaseModalComponent {
 		@Inject(MAT_DIALOG_DATA) public data: Card,
 		private dialog: DialogRef,
 		private http: HttpClient,
-		private yandexMetrika: YandexMetrikaService,
+		private metrika: MetrikaService,
 		private utm: UtmService,
 		private dsJoiner: DsJoinerService
 	) {}
@@ -137,7 +137,8 @@ export class PurchaseModalComponent {
 			.subscribe({
 				next: () => {
 					this.formState$.next(FormStates.SUCCESS);
-					this.yandexMetrika.reachGoal(this.data.goalName);
+					this.metrika.reachGoalYandex(this.data.goalName);
+					this.metrika.trackPixel('Lead');
 				},
 				error: () => this.formState$.next(FormStates.FAILED),
 			});

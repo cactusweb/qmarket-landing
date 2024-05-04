@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UtmService } from './utm.service';
-import { YandexMetrikaService } from './yandex-metrika.service';
+import { MetrikaService } from './metrika.service';
 import { HttpClient } from '@angular/common/http';
 import { API_ENDPOINTS } from '../api/api.consts';
 import { BehaviorSubject, finalize, shareReplay } from 'rxjs';
@@ -15,12 +15,13 @@ export class DsJoinerService {
 
 	constructor(
 		private utm: UtmService,
-		private yandexMetrika: YandexMetrikaService,
+		private metrika: MetrikaService,
 		private http: HttpClient
 	) {}
 
 	join() {
-		this.yandexMetrika.reachGoal('click_join_discord');
+		this.metrika.reachGoalYandex('click_join_discord');
+		this.metrika.trackPixel('Click_Discord');
 		const utm = this.utm.getUtm()?.data;
 
 		if (!utm) {

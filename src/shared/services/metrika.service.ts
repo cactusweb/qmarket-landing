@@ -3,10 +3,14 @@ import { Injectable } from '@angular/core';
 @Injectable({
 	providedIn: 'root',
 })
-export class YandexMetrikaService {
+export class MetrikaService {
 	private readonly ID = 97142453;
 
-	reachGoal(goalName: string) {
+	reachGoalYandex(goalName: string) {
 		(window as any).ym(this.ID, 'reachGoal', goalName);
+	}
+
+	trackPixel(action: string) {
+		(window as any).fbq('track', action);
 	}
 }

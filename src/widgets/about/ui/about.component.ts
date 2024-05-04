@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { YandexMetrikaService } from '../../../shared/services/yandex-metrika.service';
+import { MetrikaService } from '../../../shared/services/metrika.service';
 import { HttpClient } from '@angular/common/http';
 import { UtmService } from '../../../shared/services/utm.service';
 import { API_ENDPOINTS } from '../../../shared/api/api.consts';
