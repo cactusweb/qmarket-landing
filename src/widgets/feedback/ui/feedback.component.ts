@@ -22,7 +22,7 @@ import { FIRST_ROW_FEEDBACKS, SECOND_ROW_FEEDBACKS } from './common/feedback.con
 	styleUrl: './feedback.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeedbackComponent implements AfterViewInit {
+export class FeedbackComponent {
 	@ViewChildren('scroller')
 	scrollers!: QueryList<ElementRef<HTMLElement>>;
 
@@ -31,30 +31,14 @@ export class FeedbackComponent implements AfterViewInit {
 
 	constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-	ngAfterViewInit(): void {
-		if (isPlatformServer(this.platformId)) {
-			return;
-		}
-		// If a user hasn't opted in for recuded motion, then we add the animation
-		if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-			this.addAnimation();
-		}
+	get firstRow() {
+		return isPlatformServer(this.platformId)
+			? [...FIRST_ROW_FEEDBACKS].splice(0, 3)
+			: FIRST_ROW_FEEDBACKS;
 	}
-
-	private addAnimation() {
-		this.scrollers.toArray().forEach((scroller) => {
-			// Make an array from the elements within `.scroller-inner`
-			const scrollerInner = scroller.nativeElement.querySelector('.scroller__inner')!;
-			const scrollerContent = Array.from(scrollerInner.children);
-
-			// For each item in the array, clone it
-			// add aria-hidden to it
-			// add it into the `.scroller-inner`
-			scrollerContent.forEach((item) => {
-				const duplicatedItem = item.cloneNode(true) as HTMLElement;
-				duplicatedItem.setAttribute('aria-hidden', 'true');
-				scrollerInner.appendChild(duplicatedItem);
-			});
-		});
+	get secondRow() {
+		return isPlatformServer(this.platformId)
+			? [...SECOND_ROW_FEEDBACKS].splice(0, 3)
+			: SECOND_ROW_FEEDBACKS;
 	}
 }

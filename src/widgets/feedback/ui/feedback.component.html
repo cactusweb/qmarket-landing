@@ -3,7 +3,7 @@
 	<!-- horizontalScroll -->
 	<div class="feedback scroller" #scroller data-animated="true">
 		<div class="feedback__row scroller__inner">
-			@for (item of FIRST_ROW_FEEDBACKS; track item.name; let i = $index) {
+			@for (item of firstRow; track item.name; let i = $index) {
 				<app-feedback-item
 					[ngClass]="{ 'md:tw-ml-40 tw-ml-5': i === 0 }"
 					class="tw-min-w-fit"
@@ -12,7 +12,7 @@
 			}
 		</div>
 		<div class="feedback__row tw-mt-5 scroller__inner">
-			@for (item of SECOND_ROW_FEEDBACKS; track item.name; let i = $index) {
+			@for (item of secondRow; track item.name; let i = $index) {
 				<app-feedback-item class="tw-min-w-fit" [item]="item" />
 			}
 		</div>

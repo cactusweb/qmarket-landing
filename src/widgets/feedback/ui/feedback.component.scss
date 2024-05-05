@@ -12,10 +12,10 @@
 	width: max-content;
 	flex-wrap: nowrap;
 	&:first-child {
-		animation: scroll 420s forwards linear infinite;
+		animation: scroll 150s forwards linear infinite;
 	}
 	&:last-child {
-		animation: scroll 150s forwards linear infinite;
+		animation: scroll 80s forwards linear infinite;
 	}
 }
 
