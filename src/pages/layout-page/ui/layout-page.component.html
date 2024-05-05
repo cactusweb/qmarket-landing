@@ -1,5 +1,19 @@
 <app-header />
-<main class="tw-bg-mobile-img md:tw-bg-main-img">
+<main class="tw-relative">
+	<img
+		src="/assets/images/background.webp"
+		alt=""
+		aria-hidden="true"
+		class="bg tw-hidden md:tw-block"
+	/>
+
+	<img
+		src="/assets/images/bg-mobile.webp"
+		alt=""
+		aria-hidden="true"
+		class="bg tw-block md:tw-hidden"
+	/>
+
 	<app-about class="section" id="home" />
 
 	<app-card-list class="section" id="pricing" />

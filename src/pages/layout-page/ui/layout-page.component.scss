@@ -2,6 +2,13 @@ main {
 	@apply tw-bg-main tw-bg-contain tw-bg-no-repeat;
 	@apply tw-grid md:tw-gap-24 tw-gap-20 tw-pb-24 tw-mt-20;
 	* {
-		@apply tw-grid;
 	}
+
+	> :not(.bg) {
+		@apply tw-grid tw-z-10;
+	}
+}
+
+.bg {
+	@apply tw-absolute tw-top-0 tw-w-full tw-h-auto tw-pointer-events-none;
 }
