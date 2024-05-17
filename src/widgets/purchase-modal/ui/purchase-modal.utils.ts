@@ -38,7 +38,7 @@ export function whBuilder(
 					].filter((val) => Boolean(val.value)),
 				],
 				footer: {
-					text: 'Sent from Q-market.store',
+					text: 'Sent from Q-market.net',
 				},
 				timestamp: new Date().toISOString(),
 			},
