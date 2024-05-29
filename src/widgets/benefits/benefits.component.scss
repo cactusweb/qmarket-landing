@@ -1,0 +1,28 @@
+.p-wrapper {
+	@apply tw-p-5 tw-bg-border-second/20 tw-border-y tw-border-x-0 tw-border-border-second tw-border-solid tw-grid;
+}
+
+.p-content {
+	@apply tw-text-center tw-max-w-[546px] tw-text-sm tw-leading-[17px] tw-justify-self-center tw-w-full tw-font-normal;
+}
+
+ul {
+	@apply tw-grid tw-gap-2.5;
+
+	li {
+		@apply tw-min-h-10 tw-grid tw-grid-flow-col tw-gap-2.5 tw-items-center tw-justify-start;
+
+		span {
+			@apply tw-text-base tw-leading-5 tw-font-normal tw-text-[#EBEBEB];
+		}
+
+		.icon {
+			@apply tw-w-5 tw-h-5;
+		}
+	}
+}
+
+.qm-block__content {
+	@apply md:tw-grid-cols-[1fr_auto] tw-grid-cols-1;
+	@apply tw-grid tw-items-center tw-gap-x-10 tw-gap-y-5 tw-justify-self-center tw-w-full tw-px-5;
+}

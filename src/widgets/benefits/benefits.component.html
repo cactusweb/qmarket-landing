@@ -1,0 +1,50 @@
+<section class="qm-block">
+	<h2 class="qm-block__title">Benefits</h2>
+
+	<div class="tw-grid md:tw-gap-12 tw-gap-[30px]">
+		<div class="p-wrapper">
+			<p class="p-content libre-franklin tw-text-[#EBEBEB]">
+				All customers are satisfied with our product because our accounts significantly increase the
+				chances of buying tickets and boosting profits. Almost all customers come back to us again
+				and again.
+			</p>
+		</div>
+
+		<div class="qm-block__content">
+			<ul>
+				@for (item of BENEFITS; track $index) {
+					<li>
+						<img
+							[ngSrc]="'/assets/benefits/' + item.icon + '.svg'"
+							alt=""
+							loading="lazy"
+							[height]="item.height || '20'"
+							width="20"
+							aria-hidden="true"
+						/>
+						<span>
+							{{ item.text }}
+						</span>
+					</li>
+				}
+			</ul>
+
+			<img
+				ngSrc="/assets/benefits/main.gif"
+				height="310"
+				width="310"
+				aria-hidden="true"
+				loading="lazy"
+				class="tw-justify-self-center"
+			/>
+		</div>
+
+		<div class="p-wrapper">
+			<p class="p-content tw-text-second libre-franklin">
+				Bought accounts - Increased ticket profit. <br />
+				Bought more accounts - Increased ticket profits even more. <br />
+				It's an endless cycle.
+			</p>
+		</div>
+	</div>
+</section>

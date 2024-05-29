@@ -7,6 +7,7 @@ import { AboutComponent } from '../../../widgets/about';
 import { FaqComponent } from '../../../widgets/faq';
 import { FeedbackComponent } from '../../../widgets/feedback';
 import { CardListComponent } from '../../../widgets/card-list';
+import { BenefitsComponent } from '../../../widgets/benefits/benefits.component';
 
 @Component({
 	selector: 'app-layout-page',
@@ -20,6 +21,7 @@ import { CardListComponent } from '../../../widgets/card-list';
 		FaqComponent,
 		FeedbackComponent,
 		CardListComponent,
+		BenefitsComponent,
 	],
 	templateUrl: './layout-page.component.html',
 	styleUrl: './layout-page.component.scss',

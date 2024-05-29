@@ -21,7 +21,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 	encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent {
-	readonly navItems = ['Home', 'Pricing', 'Feedback', 'FAQ', 'Contacts'];
+	readonly navItems = ['Home', 'Benefits', 'Pricing', 'Feedback', 'FAQ', 'Contacts'];
 
 	isMenuOpen = false;
 
@@ -36,7 +36,7 @@ export class HeaderComponent {
 		if (!targetElement) {
 			return;
 		}
-		const offsetTop = targetElement.offsetTop - 80;
+		const offsetTop = targetElement.offsetTop - 50;
 		window.scrollTo({
 			top: offsetTop,
 			behavior: 'smooth',
