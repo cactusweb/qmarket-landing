@@ -5,6 +5,7 @@ import { Card } from '../../../widgets/card-list/ui/card-list.component';
 
 import { MatDialog } from '@angular/material/dialog';
 import { PurchaseModalComponent } from '../../../widgets/purchase-modal';
+import { MetrikaService } from '../../../shared/services/metrika.service';
 
 @Component({
 	selector: 'app-card-item',
@@ -18,9 +19,13 @@ export class CardItemComponent {
 	@Input()
 	data!: Card;
 
-	constructor(public dialog: MatDialog) {}
+	constructor(
+		public dialog: MatDialog,
+		private metrika: MetrikaService
+	) {}
 
 	openDialog(): void {
+		this.metrika.reachGoalYandex(this.data.openFormGoalName);
 		this.dialog.open(PurchaseModalComponent, {
 			data: this.data,
 			autoFocus: false,

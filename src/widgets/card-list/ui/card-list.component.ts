@@ -12,6 +12,7 @@ export interface Card {
 	per: string;
 	description: string[];
 	goalName: string;
+	openFormGoalName: string;
 }
 
 @Component({
@@ -40,6 +41,7 @@ export class CardListComponent {
 				'1 month guarantee',
 			],
 			goalName: 'form_submit_ticketmaster_aged_account',
+			openFormGoalName: 'click_purchase_tm_aged',
 		},
 		{
 			logo: 'tm-2.webp',
@@ -57,6 +59,7 @@ export class CardListComponent {
 				'1 month guarantee',
 			],
 			goalName: 'form_submit_ticketmaster_account_with_history',
+			openFormGoalName: 'click_purchase_tm_history',
 		},
 		{
 			logo: 'gmail.webp',
@@ -73,6 +76,7 @@ export class CardListComponent {
 				'1 month guarantee',
 			],
 			goalName: 'form_submit_gmail',
+			openFormGoalName: 'click_purchase_gmail',
 		},
 		{
 			logo: 'hotmail.webp',
@@ -89,6 +93,7 @@ export class CardListComponent {
 				'1 month guarantee',
 			],
 			goalName: 'form_submit_hotmail',
+			openFormGoalName: 'click_purchase_hotmail',
 		},
 	];
 }
