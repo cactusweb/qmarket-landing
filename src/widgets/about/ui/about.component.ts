@@ -25,4 +25,16 @@ export class AboutComponent {
 	onJoinDiscord() {
 		this.dsJoiner.join();
 	}
+
+	onPurchase() {
+		const targetElement = document.getElementById('pricing');
+		if (!targetElement) {
+			return;
+		}
+		const offsetTop = targetElement.offsetTop - 50;
+		window.scrollTo({
+			top: offsetTop,
+			behavior: 'smooth',
+		});
+	}
 }
