@@ -13,6 +13,7 @@ export interface Card {
 	description: string[];
 	goalName: string;
 	openFormGoalName: string;
+	sold?: boolean;
 }
 
 @Component({
@@ -48,7 +49,7 @@ export class CardListComponent {
 			name: 'Ticketmaster',
 			nameForWh: 'Ticketmaster history',
 			details: 'Accounts with history',
-			price: '$6,9',
+			price: '$8,9',
 			per: 'per 1',
 			description: [
 				'Age 2002-2018',
@@ -77,6 +78,7 @@ export class CardListComponent {
 			],
 			goalName: 'form_submit_gmail',
 			openFormGoalName: 'click_purchase_gmail',
+			sold: true,
 		},
 		{
 			logo: 'hotmail.webp',

@@ -10,7 +10,9 @@
 			aria-hidden="true"
 		/>
 		<div class="card__title-container">
-			<h3 class="tw-text-xl tw-leading-5 tw-font-normal">{{ data.name | uppercase }}</h3>
+			<h3 class="tw-text-xl tw-leading-5 tw-font-normal">
+				{{ data.name | uppercase }}
+			</h3>
 			<p class="card__subtitle libre-franklin">
 				{{ data.details | uppercase }}
 			</p>
@@ -37,7 +39,12 @@
 		(click)="openDialog()"
 		type="button"
 		aria-label="Open purchase form"
+		[disabled]="data.sold"
 	>
-		Purchase
+		@if (!data.sold) {
+			Purchase
+		} @else {
+			Sold Out
+		}
 	</button>
 </div>

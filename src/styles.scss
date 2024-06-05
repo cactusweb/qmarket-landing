@@ -42,7 +42,11 @@ button {
 	@apply tw-h-10 tw-p-0 tw-flex tw-content-center tw-items-center tw-justify-center;
 	@apply tw-rounded-[5px] tw-border tw-border-second tw-border-solid;
 	@apply tw-text-white tw-text-lg tw-leading-[19px] tw-font-normal;
-	@apply hover:tw-bg-second/20 tw-gap-2;
+	@apply tw-gap-2;
+	&:not(:disabled) {
+		@apply hover:tw-bg-second/20;
+	}
+	@apply disabled:tw-cursor-default disabled:tw-opacity-50;
 	letter-spacing: 1px;
 	transition: 0.2s;
 }
