@@ -8,7 +8,7 @@
 <div class="product">
 	<div class="product__main">
 		<img
-			[ngSrc]="'assets/products/' + data.logo"
+			[ngSrc]="'assets/products/' + data.img"
 			width="53"
 			height="53"
 			priority
@@ -18,7 +18,7 @@
 		<div class="tw-flex tw-flex-col tw-gap-[5px]">
 			<h3 class="product__title">{{ data.name | uppercase }}</h3>
 			<p class="product__subtitle libre-franklin">
-				{{ data.details | uppercase }}
+				{{ data.description | uppercase }}
 			</p>
 		</div>
 	</div>

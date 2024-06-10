@@ -1,7 +1,6 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { Card } from '../../card-list/ui/card-list.component';
 import { TextFieldModule } from '@angular/cdk/text-field';
 
 import { MAT_DIALOG_DATA, MatDialogClose } from '@angular/material/dialog';
@@ -21,6 +20,7 @@ import { MetrikaService } from '../../../shared/services/metrika.service';
 import { API_ENDPOINTS } from '../../../shared/api/api.consts';
 import { UtmService } from '../../../shared/services/utm.service';
 import { DsJoinerService } from '../../../shared/services/ds-joiner.service';
+import { ProductItem } from '../../../shared/models/product-item.models';
 
 enum PanelStates {
 	COLLAPSED = 'COLLAPSED',
@@ -90,7 +90,7 @@ export class PurchaseModalComponent {
 	readonly joinLoading$ = this.dsJoiner.loading$;
 
 	constructor(
-		@Inject(MAT_DIALOG_DATA) public data: Card,
+		@Inject(MAT_DIALOG_DATA) public data: ProductItem,
 		private dialog: DialogRef,
 		private http: HttpClient,
 		private metrika: MetrikaService,
@@ -128,20 +128,20 @@ export class PurchaseModalComponent {
 
 		this.formState$.next(FormStates.LOADING);
 
-		this.http
-			.post(API_ENDPOINTS.PURCHASE, {
-				product: this.data.nameForWh || this.data.name,
-				...this.form.value,
-				utm: this.utm.getUtm()?.data,
-			})
-			.subscribe({
-				next: () => {
-					this.formState$.next(FormStates.SUCCESS);
-					this.metrika.reachGoalYandex(this.data.goalName);
-					this.metrika.trackPixel('Lead');
-				},
-				error: () => this.formState$.next(FormStates.FAILED),
-			});
+		// this.http
+		// 	.post(API_ENDPOINTS.PURCHASE, {
+		// 		product: this.data.nameForWh || this.data.name,
+		// 		...this.form.value,
+		// 		utm: this.utm.getUtm()?.data,
+		// 	})
+		// 	.subscribe({
+		// 		next: () => {
+		// 			this.formState$.next(FormStates.SUCCESS);
+		// 			this.metrika.reachGoalYandex(this.data.goalName);
+		// 			this.metrika.trackPixel('Lead');
+		// 		},
+		// 		error: () => this.formState$.next(FormStates.FAILED),
+		// 	});
 	}
 
 	togglePanelState() {

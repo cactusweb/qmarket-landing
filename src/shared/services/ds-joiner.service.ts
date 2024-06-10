@@ -22,7 +22,7 @@ export class DsJoinerService {
 	join() {
 		this.metrika.reachGoalYandex('click_join_discord');
 		this.metrika.trackPixel('Click_Discord');
-		const utm = this.utm.getUtm()?.data;
+		const utm = this.utm.get()?.data;
 
 		if (!utm) {
 			return this.openInvite(DEFAULT_DS_INVITE);

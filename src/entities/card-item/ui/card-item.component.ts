@@ -1,11 +1,11 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { Card } from '../../../widgets/card-list/ui/card-list.component';
 
 import { MatDialog } from '@angular/material/dialog';
 import { PurchaseModalComponent } from '../../../widgets/purchase-modal';
 import { MetrikaService } from '../../../shared/services/metrika.service';
+import { ProductItem } from '../../../shared/models/product-item.models';
 
 @Component({
 	selector: 'app-card-item',
@@ -17,7 +17,7 @@ import { MetrikaService } from '../../../shared/services/metrika.service';
 })
 export class CardItemComponent {
 	@Input()
-	data!: Card;
+	product!: ProductItem;
 
 	constructor(
 		public dialog: MatDialog,
@@ -25,9 +25,9 @@ export class CardItemComponent {
 	) {}
 
 	openDialog(): void {
-		this.metrika.reachGoalYandex(this.data.openFormGoalName);
+		this.metrika.reachGoalYandex(this.product.openFormGoalName);
 		this.dialog.open(PurchaseModalComponent, {
-			data: this.data,
+			data: this.product,
 			autoFocus: false,
 			restoreFocus: false,
 			maxWidth: '660px',

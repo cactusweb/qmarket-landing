@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { UtmService } from '../shared/services/utm.service';
+import { BasketService } from '../shared/services/basket.service';
 
 @Component({
 	selector: 'app-root',
@@ -11,11 +12,13 @@ import { UtmService } from '../shared/services/utm.service';
 	imports: [CommonModule, RouterOutlet],
 	templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	constructor(
 		private matIconRegistry: MatIconRegistry,
 		private domSanitizer: DomSanitizer,
-		private utmService: UtmService
+		utmService: UtmService,
+		private basketService: BasketService,
+		@Inject(PLATFORM_ID) private platformId: Object
 	) {
 		this.matIconRegistry.addSvgIcon(
 			'discord',
@@ -61,5 +64,11 @@ export class AppComponent {
 			'card',
 			this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/card.svg')
 		);
+	}
+
+	ngOnInit(): void {
+		if (isPlatformBrowser(this.platformId)) {
+			this.basketService.fetch();
+		}
 	}
 }

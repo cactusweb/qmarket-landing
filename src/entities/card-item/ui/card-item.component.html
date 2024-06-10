@@ -1,7 +1,7 @@
 <div class="card">
 	<div class="card__header">
 		<img
-			[ngSrc]="'assets/products/' + data.logo"
+			[ngSrc]="product.img"
 			width="63"
 			height="63"
 			loading="lazy"
@@ -11,23 +11,21 @@
 		/>
 		<div class="card__title-container">
 			<h3 class="tw-text-xl tw-leading-5 tw-font-normal">
-				{{ data.name | uppercase }}
+				{{ product.name | uppercase }}
 			</h3>
 			<p class="card__subtitle libre-franklin">
-				{{ data.details | uppercase }}
+				{{ product.description | uppercase }}
 			</p>
 		</div>
 	</div>
 
 	<p class="price">
-		<span class="price__amount">
-			{{ data.price }}
-		</span>
-		<span class="price__per"> /{{ data.per }} </span>
+		<span class="price__amount"> ${{ product.price }} </span>
+		<span class="price__per"> /{{ product.per }} </span>
 	</p>
 
 	<ul class="features">
-		@for (feature of data.description; track $index) {
+		@for (feature of product.features; track $index) {
 			<li class="features__item">
 				{{ feature }}
 			</li>
@@ -39,10 +37,10 @@
 		(click)="openDialog()"
 		type="button"
 		aria-label="Open purchase form"
-		[disabled]="data.sold"
+		[disabled]="product.sold"
 	>
-		@if (!data.sold) {
-			Purchase
+		@if (!product.sold) {
+			Add to cart
 		} @else {
 			Sold Out
 		}

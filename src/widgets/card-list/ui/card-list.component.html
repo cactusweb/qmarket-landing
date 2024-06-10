@@ -1,8 +1,8 @@
 <section class="qm-block qm-block_margined">
 	<h2 class="qm-block__title">Pricing</h2>
 	<div class="qm-block__content product-grid">
-		@for (item of data; track $index) {
-			<app-card-item class="product-card" [data]="item"></app-card-item>
+		@for (item of PRODUCT_ITEMS; track $index) {
+			<app-card-item class="product-card" [product]="item"></app-card-item>
 		}
 	</div>
 </section>
