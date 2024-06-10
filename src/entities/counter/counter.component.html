@@ -1,0 +1,26 @@
+<button
+	type="button"
+	(click)="decrease()"
+	matRipple
+	matRippleColor="#654e7140"
+	aria-label="Decrease product quality"
+>
+	<mat-icon svgIcon="minus" />
+</button>
+<input
+	aria-label="Quality of product in basket"
+	type="number"
+	autocomplete="off"
+	step="1"
+	min="0"
+	[(ngModel)]="val"
+	(ngModelChange)="onChangeQty()"
+/>
+<button
+	(click)="increase()"
+	matRipple
+	matRippleColor="#654e7140"
+	aria-label="Increase product quality"
+>
+	<mat-icon svgIcon="plus" />
+</button>

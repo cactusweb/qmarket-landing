@@ -32,17 +32,37 @@
 		}
 	</ul>
 
-	<button
-		class="qm-button tw-w-full tw-mt-auto"
-		(click)="openDialog()"
-		type="button"
-		aria-label="Open purchase form"
-		[disabled]="product.sold"
-	>
-		@if (!product.sold) {
-			Add to cart
-		} @else {
-			Sold Out
-		}
-	</button>
+	<div class="action-container action-container_{{ counter.value === 0 ? 'btn' : 'counter' }}">
+		<div class="counter-container" [attr.aria-hidden]="counter.value === 0">
+			<qm-counter [formControl]="counter" />
+			<button aria-label="Open basket" matRipple matRippleColor="#654e7140" type="button">
+				<img
+					ngSrc="/assets/icons/basket-violet.svg"
+					width="24"
+					height="24"
+					priority="lazy"
+					aria-hidden="true"
+					alt=""
+				/>
+			</button>
+		</div>
+
+		<button
+			class="qm-button tw-w-full tw-mt-auto"
+			(click)="addToCart()"
+			type="button"
+			matRipple
+			aria-label="Open purchase form"
+			[attr.aria-hidden]="counter.value! > 0"
+			[disabled]="product.sold"
+			matRipple
+			matRippleColor="#654e7140"
+		>
+			@if (!product.sold) {
+				Add to cart
+			} @else {
+				Sold Out
+			}
+		</button>
+	</div>
 </div>

@@ -37,3 +37,39 @@
 		@apply tw-text-base tw-leading-5 tw-pl-2.5 tw-border-0 tw-border-l-2 tw-border-solid tw-border-l-second;
 	}
 }
+
+.action-container {
+	@apply tw-flex;
+
+	> * {
+		@apply tw-w-0;
+		transition: 0.3s;
+		@apply tw-ease-out;
+	}
+
+	&_btn button {
+		@apply tw-w-full;
+	}
+
+	&_counter {
+		button {
+			@apply tw-border-0;
+		}
+		.counter-container {
+			@apply tw-w-full;
+		}
+	}
+}
+
+button {
+	@apply tw-overflow-hidden tw-box-border tw-whitespace-nowrap;
+}
+
+.counter-container {
+	@apply tw-grid tw-gap-5 tw-overflow-hidden;
+	grid-template-columns: 1fr auto;
+
+	button {
+		@apply tw-w-10 tw-h-10 tw-rounded-[5px] tw-bg-[#2F0D41];
+	}
+}

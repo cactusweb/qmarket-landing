@@ -64,6 +64,10 @@ export class AppComponent implements OnInit {
 			'card',
 			this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/card.svg')
 		);
+		this.matIconRegistry.addSvgIcon(
+			'basket',
+			this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/basket.svg')
+		);
 	}
 
 	ngOnInit(): void {

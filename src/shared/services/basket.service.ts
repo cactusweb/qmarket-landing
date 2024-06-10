@@ -67,15 +67,16 @@ export class BasketService {
 
 				return basket;
 			}),
-			switchMap((basket) => this.patchBasket(basket)),
+			tap((d) => this.#basket$.next(d)),
+			switchMap((basket) => this.patchBasket(basket.products)),
 			tap((basket) => this.#basket$.next(basket)),
 			finalize(() => this.#pending$.next(false))
 		);
 	}
 
-	private patchBasket(basket: BasketDTO) {
+	private patchBasket(products: BasketProductDTO[]) {
 		const url = API_ENDPOINTS.BASKET.replace(':param', getUserId());
-		return this.http.patch<BasketDTO>(url, basket);
+		return this.http.patch<BasketDTO>(url, { products });
 	}
 
 	private processUserId() {
