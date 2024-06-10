@@ -8,6 +8,7 @@ import { FaqComponent } from '../../../widgets/faq';
 import { FeedbackComponent } from '../../../widgets/feedback';
 import { CardListComponent } from '../../../widgets/card-list';
 import { BenefitsComponent } from '../../../widgets/benefits/benefits.component';
+import { BasketStatusComponent } from '../../../entities/basket-status/basket-status.component';
 
 @Component({
 	selector: 'app-layout-page',
@@ -22,6 +23,7 @@ import { BenefitsComponent } from '../../../widgets/benefits/benefits.component'
 		FeedbackComponent,
 		CardListComponent,
 		BenefitsComponent,
+		BasketStatusComponent,
 	],
 	templateUrl: './layout-page.component.html',
 	styleUrl: './layout-page.component.scss',

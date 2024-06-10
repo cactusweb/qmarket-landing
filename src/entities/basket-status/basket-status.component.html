@@ -1,0 +1,13 @@
+<button
+	class="qm-button"
+	type="button"
+	matRipple
+	matRippleColor="#654e7125"
+	aria-label="Open basket"
+	[attr.aria-hidden]="hidden"
+>
+	<mat-icon svgIcon="basket" />
+	<span> Cart </span>
+
+	<span class="counter">{{ quantity() }}</span>
+</button>
