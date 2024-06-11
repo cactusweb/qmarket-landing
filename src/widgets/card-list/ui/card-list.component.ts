@@ -14,5 +14,5 @@ import { PRODUCT_ITEMS } from '../../../shared/consts/products.consts';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardListComponent {
-	readonly PRODUCT_ITEMS = PRODUCT_ITEMS
+	readonly PRODUCT_ITEMS = PRODUCT_ITEMS;
 }

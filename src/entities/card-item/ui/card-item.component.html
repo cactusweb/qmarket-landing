@@ -32,7 +32,10 @@
 		}
 	</ul>
 
-	<div class="action-container action-container_{{ counter.value === 0 ? 'btn' : 'counter' }}">
+	<div
+		class="action-container"
+		[ngClass]="'action-container_' + (counter.value === 0 ? 'btn' : 'counter')"
+	>
 		<div class="counter-container" [attr.aria-hidden]="counter.value === 0">
 			<qm-counter [formControl]="counter" />
 			<button aria-label="Open basket" matRipple matRippleColor="#654e7140" type="button">
