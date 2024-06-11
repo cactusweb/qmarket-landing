@@ -1,12 +1,12 @@
 :host {
-	@apply tw-w-full tw-h-10 tw-bg-[#2F0D41];
+	@apply tw-w-full tw-h-10 tw-bg-border-second;
 	@apply tw-grid tw-rounded-[5px] tw-overflow-hidden;
-	grid-template-columns: 40px 1fr 40px;
+	grid-template-columns: 36px 1fr 36px;
 }
 
 input {
 	background-color: rgba($color: #000000, $alpha: 0);
-	@apply tw-border-none tw-text-center tw-text-base tw-text-text;
+	@apply tw-border-none tw-text-center tw-text-base tw-text-text tw-p-0;
 }
 
 button {

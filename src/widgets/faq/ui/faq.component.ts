@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatRipple } from '@angular/material/core';
 
 @Component({
 	selector: 'app-faq',
 	standalone: true,
-	imports: [CommonModule, MatIconModule, MatExpansionModule],
+	imports: [CommonModule, MatIconModule, MatExpansionModule, MatRipple],
 	templateUrl: './faq.component.html',
 	styleUrl: './faq.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

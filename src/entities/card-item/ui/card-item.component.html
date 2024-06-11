@@ -20,8 +20,8 @@
 	</div>
 
 	<p class="price">
-		<span class="price__amount"> ${{ product.price }} </span>
-		<span class="price__per"> /{{ product.per }} </span>
+		<span class="price__amount"> ${{ price }} </span>
+		<span class="price__per"> /per {{ product.per }} </span>
 	</p>
 
 	<ul class="features">
@@ -37,7 +37,7 @@
 		[ngClass]="'action-container_' + (counter.value === 0 ? 'btn' : 'counter')"
 	>
 		<div class="counter-container" [attr.aria-hidden]="counter.value === 0">
-			<qm-counter [formControl]="counter" />
+			<qm-counter [formControl]="counter" [step]="product.per" />
 			<button
 				aria-label="Open basket"
 				matRipple

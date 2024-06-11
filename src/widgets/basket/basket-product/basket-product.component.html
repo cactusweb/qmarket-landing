@@ -1,20 +1,20 @@
 <div class="tw-grid tw-gap-3 5 tw-grid-flow-col">
 	<img [ngSrc]="product.img" alt="" aria-hidden="true" width="53" height="53" loading="lazy" />
-	
-	<div class="title">
+
+	<div class="title" [style.width]="titleWidth">
 		<h3 class="title__main">{{ product.name }}</h3>
 		<p class="title__sub libre-franklin">{{ product.description }}</p>
 	</div>
 </div>
 
-<div
-	class="counter-container"
->
-	<qm-counter [formControl]="counter" class="tw-max-w-[200px] tw-w-full" />
+<div class="counter-container">
+	<qm-counter
+		[formControl]="counter"
+		[step]="product.per"
+		class="md:tw-max-w-[150px] tw-max-w-[200px] tw-w-full"
+	/>
 	<p class="price">
-		<span class="price__amount">
-			${{ product.price * counter.value }}
-		</span>
+		<span class="price__amount"> ${{ totalPrice }} </span>
 		<span class="price__text">total</span>
 	</p>
 </div>

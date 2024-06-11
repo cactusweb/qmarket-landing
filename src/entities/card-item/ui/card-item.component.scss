@@ -70,6 +70,6 @@ button {
 	grid-template-columns: 1fr auto;
 
 	button {
-		@apply tw-w-10 tw-h-10 tw-rounded-[5px] tw-bg-[#2F0D41];
+		@apply tw-w-10 tw-h-10 tw-rounded-[5px] tw-bg-border-second;
 	}
 }

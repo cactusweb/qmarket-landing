@@ -11,10 +11,10 @@
 	aria-label="Quality of product in basket"
 	type="number"
 	autocomplete="off"
-	step="1"
+	[step]="step"
 	min="0"
 	[(ngModel)]="val"
-	(ngModelChange)="onChangeQty()"
+	(blur)="onChangeQty()"
 />
 <button
 	(click)="increase()"

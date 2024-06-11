@@ -1,0 +1,43 @@
+<div class="header">
+	<h4 class="title">Payment method</h4>
+	<mat-radio-group class="radio-container" [formControl]="paymentMethod" name="payment-method">
+		<label>
+			<mat-radio-button [value]="PaymentMethods.DISCORD" class="radio">
+				<span class="radio__content libre-franklin">
+					<mat-icon svgIcon="discord" />
+					Discord
+				</span>
+			</mat-radio-button>
+		</label>
+		<label>
+			<mat-radio-button [value]="PaymentMethods.TELEGRAM" class="radio">
+				<span class="radio__content libre-franklin">
+					<mat-icon svgIcon="telegram" />
+					Telegram
+				</span>
+			</mat-radio-button>
+		</label>
+	</mat-radio-group>
+</div>
+
+<span class="divider"></span>
+
+<div class="tw-grid tw-gap-5">
+	<p class="price">
+		<span class="price__text">total</span>
+		<span class="price__amount">${{ totalPrice() }}</span>
+	</p>
+	<button
+		class="qm-button"
+		matRipple
+		matRippleColor="#654e7125"
+		(click)="onPurchase()"
+		[disabled]="loading()"
+	>
+		@if (!loading()) {
+			Purchase
+		} @else {
+			...
+		}
+	</button>
+</div>

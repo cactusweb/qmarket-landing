@@ -1,6 +1,5 @@
 export interface ProductItem extends ProductItemShort {
 	nameForWh?: string;
-	per: string;
 	features: string[];
 	goalName: string;
 	openFormGoalName: string;
@@ -13,4 +12,5 @@ export interface ProductItemShort {
 	name: string;
 	description: string;
 	price: number;
+	per: number;
 }

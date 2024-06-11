@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, forwardRef, signal } from '@angular/core';
 import {
 	ControlValueAccessor,
 	FormsModule,
@@ -24,6 +24,9 @@ import { MatIcon } from '@angular/material/icon';
 	standalone: true,
 })
 export class CounterComponent implements ControlValueAccessor {
+	@Input()
+	step!: number;
+
 	readonly val = signal(0);
 
 	onTouche!: () => void;
@@ -42,8 +45,13 @@ export class CounterComponent implements ControlValueAccessor {
 	}
 
 	onChangeQty() {
-		if (this.val() < 1) {
+		if (this.val() < this.step) {
 			this.val.set(0);
+		}
+
+		if (this.val() % this.step !== 0) {
+			const value = Math.ceil(this.val() / this.step) * this.step;
+			this.val.set(value);
 		}
 
 		this.onChange(this.val());
@@ -51,13 +59,13 @@ export class CounterComponent implements ControlValueAccessor {
 	}
 
 	increase() {
-		this.val.set(this.val() + 1);
+		this.val.set(this.val() + this.step);
 		this.onChange(this.val());
 		this.onTouche();
 	}
 
 	decrease() {
-		this.val.set(this.val() - 1);
+		this.val.set(this.val() - this.step);
 		this.onChange(this.val());
 		this.onTouche();
 	}

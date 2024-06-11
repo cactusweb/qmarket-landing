@@ -16,6 +16,8 @@
 							<button
 								class="qm-button"
 								[attr.aria-label]="(panel.open ? 'Collapse' : 'Expand') + 'panel'"
+								matRipple
+								matRippleColor="#654e7140"
 							>
 								<mat-icon svgIcon="plus" [ngClass]="!panel.open ? 'visible' : 'hidden'" />
 								<mat-icon svgIcon="minus" [ngClass]="panel.open ? 'visible' : 'hidden'" />

@@ -5,11 +5,15 @@
 	</button>
 </header>
 
-<main class="tw-p-5">
+<main>
 	<ul class="products">
 		@for (product of basket().products; track $index) {
 			<li>
-				<qm-basket-product [product]="product" />
+				<qm-basket-product
+					[product]="product"
+					(setTitleWidth)="productsTitleWidth.set($event)"
+					[titleWidth]="productsTitleWidth()"
+				/>
 			</li>
 			@if ($index !== $count - 1) {
 				<li aria-hidden="true">
@@ -19,5 +23,5 @@
 		}
 	</ul>
 
-	<button (click)="onPurchase()">purchase</button>
+	<qm-basket-payment />
 </main>

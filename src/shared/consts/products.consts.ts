@@ -9,7 +9,7 @@ export const PRODUCT_ITEMS: ProductItem[] = [
 		description: 'aged accounts',
 		nameForWh: 'Ticketmaster regular',
 		price: 4.9,
-		per: 'per 1',
+		per: 1,
 		features: [
 			'Age 2002-2018',
 			'Forwarding included',
@@ -28,7 +28,7 @@ export const PRODUCT_ITEMS: ProductItem[] = [
 		nameForWh: 'Ticketmaster history',
 		description: 'Accounts with history',
 		price: 8.9,
-		per: 'per 1',
+		per: 1,
 		features: [
 			'Age 2002-2018',
 			'Forwarding included',
@@ -45,8 +45,8 @@ export const PRODUCT_ITEMS: ProductItem[] = [
 		img: SITE_URL + '/assets/products/gmail.webp',
 		name: 'GMAIL',
 		description: 'Forwarded',
-		price: 89.9,
-		per: 'per 100',
+		price: 0.899,
+		per: 100,
 		features: [
 			'Age 1 month+',
 			'Mixed regions',
@@ -64,8 +64,8 @@ export const PRODUCT_ITEMS: ProductItem[] = [
 		img: SITE_URL + '/assets/products/hotmail.webp',
 		name: 'HOTMAIL',
 		description: 'Forwarded',
-		price: 19.9,
-		per: 'per 100',
+		price: 0.199,
+		per: 100,
 		features: [
 			'Age 1 month+',
 			'Mixed regions',

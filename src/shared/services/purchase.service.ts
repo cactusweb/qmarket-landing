@@ -14,6 +14,7 @@ export class PurchaseService {
 
 	viaDiscord() {
 		const url = API_ENDPOINTS.INVITE.replace(':param', getUserId());
+		this.#loading$.next(true);
 		this.http
 			.get<{ invite: string }>(url)
 			.pipe(finalize(() => this.#loading$.next(false)))

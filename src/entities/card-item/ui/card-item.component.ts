@@ -6,6 +6,7 @@ import {
 	Input,
 	OnChanges,
 	inject,
+	signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MetrikaService } from '../../../shared/services/metrika.service';
 import { ProductItem } from '../../../shared/models/product-item.models';
 import { BasketService } from '../../../shared/services/basket.service';
-import { map } from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CounterComponent } from '../../counter/counter.component';
 import { MatRipple } from '@angular/material/core';
@@ -39,7 +40,7 @@ export class CardItemComponent implements OnChanges {
 	product!: ProductItem;
 
 	readonly counter = new FormControl(0);
-	val = 0;
+	readonly #productsCount = signal(0);
 
 	readonly #destroyRef = inject(DestroyRef);
 
@@ -47,6 +48,10 @@ export class CardItemComponent implements OnChanges {
 		private metrika: MetrikaService,
 		private basket: BasketService
 	) {}
+
+	get price() {
+		return Math.floor(this.product.price * this.product.per * 100) / 100;
+	}
 
 	ngOnChanges(): void {
 		this.basket.basket$
@@ -56,11 +61,15 @@ export class CardItemComponent implements OnChanges {
 				map((product) => product?.quantity || 0)
 			)
 			.subscribe((res) => {
+				this.#productsCount.set(res);
 				this.counter.setValue(res, { emitEvent: false });
 			});
 
 		this.counter.valueChanges
-			.pipe(takeUntilDestroyed(this.#destroyRef))
+			.pipe(
+				takeUntilDestroyed(this.#destroyRef),
+				distinctUntilChanged((_, newVal) => newVal === this.#productsCount())
+			)
 			.subscribe((res) => this.setQuantity(res!));
 	}
 
@@ -69,7 +78,7 @@ export class CardItemComponent implements OnChanges {
 	}
 
 	addToCart(): void {
-		this.counter.setValue(1);
+		this.counter.setValue(this.product.per);
 	}
 
 	setQuantity(qty: number) {
@@ -81,6 +90,7 @@ export class CardItemComponent implements OnChanges {
 				price: this.product.price,
 				quantity: qty,
 				id: this.product.id,
+				per: this.product.per,
 			})
 			.subscribe(() => {});
 	}

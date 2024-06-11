@@ -1,3 +1,8 @@
+:host {
+	@apply tw-grid tw-bg-[#2F0D4133] max-md:tw-h-screen;
+	grid-template-rows: auto 1fr;
+}
+
 .header {
 	@apply tw-bg-modal-img tw-bg-cover tw-bg-center;
 	@apply tw-flex tw-justify-between tw-items-center tw-content-center;
@@ -14,7 +19,7 @@
 }
 
 .products {
-	@apply tw-grid tw-gap-5 md:tw-p-2.5;
+	@apply tw-grid tw-gap-5 md:tw-p-2.5 tw-p-5 tw-content-start;
 }
 
 .divider {
@@ -23,4 +28,14 @@
 
 li {
 	@apply max-md:tw-max-w-lg tw-w-full tw-justify-self-center;
+}
+
+main {
+	@apply tw-grid md:tw-p-5 md:tw-grid-cols-[1fr_auto] tw-grid-rows-[1fr_auto] md:tw-gap-5;
+}
+
+qm-basket-payment {
+	@media screen and (max-width: 768px) {
+		@apply tw-max-w-lg tw-w-full;
+	}
 }

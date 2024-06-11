@@ -9,7 +9,7 @@ img {
 }
 
 button {
-	@apply tw-w-10 tw-h-10;
+	@apply md:tw-w-7 tw-w-10 tw-h-10;
 }
 
 .title {
@@ -21,12 +21,14 @@ button {
 
 	&__sub {
 		@apply tw-text-sm tw-leading-4 md:tw-text-base md:tw-leading-5 tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded;
+		@apply max-[830px]:tw-max-w-[140px] max-md:tw-max-w-none;
+		@apply tw-whitespace-nowrap tw-overflow-hidden tw-text-ellipsis;
 	}
 }
 
 .counter-container {
-	@apply tw-flex tw-justify-between max-md:tw-row-start-2 max-md:tw-col-start-1 max-md:tw-col-end-3;
-	@apply md:tw-ml-20;
+	@apply tw-flex tw-justify-between max-md:tw-row-start-2 max-md:tw-col-start-1 max-md:tw-col-end-3 tw-gap-2.5;
+	@apply tw-ml-16 max-[900px]:tw-ml-2 max-md:tw-ml-0;
 	@apply tw-items-center;
 }
 
