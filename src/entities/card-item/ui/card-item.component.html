@@ -38,7 +38,13 @@
 	>
 		<div class="counter-container" [attr.aria-hidden]="counter.value === 0">
 			<qm-counter [formControl]="counter" />
-			<button aria-label="Open basket" matRipple matRippleColor="#654e7140" type="button">
+			<button
+				aria-label="Open basket"
+				matRipple
+				matRippleColor="#654e7140"
+				type="button"
+				(click)="openBasket()"
+			>
 				<img
 					ngSrc="/assets/icons/basket-violet.svg"
 					width="24"

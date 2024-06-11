@@ -7,17 +7,17 @@ app-header {
 	}
 
 	li {
-		color: #ebebeb;
+		@apply tw-text-text;
 		text-decoration: none;
 		transition: 0.2s;
 
 		&:hover {
-			color: #b12eff;
+			@apply tw-text-second;
 		}
 	}
 
 	li.active {
-		color: #b12eff;
+		@apply tw-text-second;
 	}
 
 	.menu-icon {

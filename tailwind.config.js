@@ -14,6 +14,7 @@ module.exports = {
 				second: '#B12EFF',
 				'border-second': '#2F0D41',
 				text: '#EBEBEB',
+				error: '#FF4A4A',
 			},
 			width: {
 				main: '840px',

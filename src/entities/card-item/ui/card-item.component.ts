@@ -45,11 +45,11 @@ export class CardItemComponent implements OnChanges {
 
 	constructor(
 		private metrika: MetrikaService,
-		private basketService: BasketService
+		private basket: BasketService
 	) {}
 
 	ngOnChanges(): void {
-		this.basketService.basket$
+		this.basket.basket$
 			.pipe(
 				takeUntilDestroyed(this.#destroyRef),
 				map((basket) => basket.products.find((p) => p.id === this.product.id)),
@@ -64,12 +64,16 @@ export class CardItemComponent implements OnChanges {
 			.subscribe((res) => this.setQuantity(res!));
 	}
 
+	openBasket() {
+		this.basket.open();
+	}
+
 	addToCart(): void {
 		this.counter.setValue(1);
 	}
 
 	setQuantity(qty: number) {
-		this.basketService
+		this.basket
 			.patchProduct({
 				name: this.product.name,
 				description: this.product.description,

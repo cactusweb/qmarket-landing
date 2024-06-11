@@ -7,19 +7,22 @@ import { API_ENDPOINTS } from '../api/api.consts';
 import { getUserId, setUserId } from '../utils/user-id.utils';
 import { isPlatformBrowser } from '@angular/common';
 import { clearQueryParams, getQueryParams } from '../utils/router.utils';
+import { BasketComponent } from '../../widgets/basket/basket.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable()
 export class BasketService {
 	readonly basket$;
 	readonly pending$;
 
-	readonly #basket$ = new ReplaySubject<BasketDTO>();
+	readonly #basket$ = new ReplaySubject<BasketDTO>(1);
 	readonly #pending$ = new BehaviorSubject(false);
 
 	constructor(
 		private http: HttpClient,
 		private utm: UtmService,
-		@Inject(PLATFORM_ID) platformId: Object
+		@Inject(PLATFORM_ID) platformId: Object,
+		private matDialog: MatDialog
 	) {
 		this.basket$ = this.#basket$.asObservable();
 		this.pending$ = this.#pending$.asObservable();
@@ -27,6 +30,15 @@ export class BasketService {
 		if (isPlatformBrowser(platformId)) {
 			this.processUserId();
 		}
+	}
+
+	open() {
+		this.matDialog.open(BasketComponent, {
+			maxWidth: '1024px',
+			width: '100%',
+			autoFocus: false,
+			restoreFocus: false,
+		});
 	}
 
 	fetch() {

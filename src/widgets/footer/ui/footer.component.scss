@@ -18,8 +18,7 @@ footer {
 }
 
 .designed {
-	@apply tw-text-sm tw-leading-[10px];
-	color: #ebebeb40;
+	@apply tw-text-sm tw-leading-[10px] tw-text-text/40;
 	a {
 		transition: 0.2s;
 		@apply hover:tw-text-second hover:tw-underline;

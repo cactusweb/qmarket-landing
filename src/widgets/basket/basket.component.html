@@ -1,0 +1,23 @@
+<header class="header">
+	<h2 class="header__title">Cart</h2>
+	<button aria-label="Close modal" mat-dialog-close class="header__btn">
+		<mat-icon class="tw-cursor-pointer" svgIcon="close" />
+	</button>
+</header>
+
+<main class="tw-p-5">
+	<ul class="products">
+		@for (product of basket().products; track $index) {
+			<li>
+				<qm-basket-product [product]="product" />
+			</li>
+			@if ($index !== $count - 1) {
+				<li aria-hidden="true">
+					<span class="divider"></span>
+				</li>
+			}
+		}
+	</ul>
+
+	<button (click)="onPurchase()">purchase</button>
+</main>

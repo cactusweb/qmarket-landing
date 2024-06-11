@@ -1,0 +1,26 @@
+.header {
+	@apply tw-bg-modal-img tw-bg-cover tw-bg-center;
+	@apply tw-flex tw-justify-between tw-items-center tw-content-center;
+	@apply tw-p-5;
+	@apply tw-border-0 tw-border-solid tw-border-b tw-border-b-border-second;
+
+	&__title {
+		@apply tw-m-0 tw-text-second tw-text-2xl tw-leading-[24px] md:tw-text-3xl md:tw-leading-[30px] tw-font-normal;
+	}
+
+	&__btn {
+		@apply tw-w-10 tw-h-10;
+	}
+}
+
+.products {
+	@apply tw-grid tw-gap-5 md:tw-p-2.5;
+}
+
+.divider {
+	@apply tw-w-full tw-h-px tw-bg-border-second tw-block;
+}
+
+li {
+	@apply max-md:tw-max-w-lg tw-w-full tw-justify-self-center;
+}

@@ -1,14 +1,7 @@
-import {
-	ChangeDetectionStrategy,
-	ChangeDetectorRef,
-	Component,
-	HostBinding,
-	inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding } from '@angular/core';
 import { BasketService } from '../../shared/services/basket.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { MatRipple } from '@angular/material/core';
 
@@ -17,12 +10,12 @@ import { MatRipple } from '@angular/material/core';
 	templateUrl: './basket-status.component.html',
 	styleUrl: './basket-status.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [MatDialogModule, MatIcon, MatRipple],
+	imports: [MatIcon, MatRipple],
 	standalone: true,
 })
 export class BasketStatusComponent {
 	readonly quantity = toSignal(
-		inject(BasketService).basket$.pipe(
+		this.basket.basket$.pipe(
 			map((d) => d.products.length),
 			tap((length) => {
 				this.toggleFooterPadding(length ? 'add' : 'remove');
@@ -32,8 +25,8 @@ export class BasketStatusComponent {
 	);
 
 	constructor(
-		private matDialog: MatDialog,
-		private cdr: ChangeDetectorRef
+		private cdr: ChangeDetectorRef,
+		private basket: BasketService
 	) {}
 
 	@HostBinding('class.hidden')
@@ -42,7 +35,7 @@ export class BasketStatusComponent {
 	}
 
 	openBasket() {
-		// this.matDialog.open();
+		this.basket.open();
 	}
 
 	toggleFooterPadding(action: 'add' | 'remove') {
