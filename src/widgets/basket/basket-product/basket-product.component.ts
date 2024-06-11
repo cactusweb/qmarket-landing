@@ -15,7 +15,7 @@ import { MatIcon } from '@angular/material/icon';
 import { BasketService } from '../../../shared/services/basket.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgOptimizedImage } from '@angular/common';
-import { distinctUntilChanged } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
 	selector: 'qm-basket-product',
@@ -42,7 +42,7 @@ export class BasketProductComponent implements OnInit, AfterViewInit {
 		private eRef: ElementRef<HTMLElement>
 	) {
 		this.counter.valueChanges
-			.pipe(takeUntilDestroyed(), distinctUntilChanged())
+			.pipe(takeUntilDestroyed(), debounceTime(300), distinctUntilChanged())
 			.subscribe((res) => {
 				this.setQuantity(res);
 			});

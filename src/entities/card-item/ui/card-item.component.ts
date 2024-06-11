@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MetrikaService } from '../../../shared/services/metrika.service';
 import { ProductItem } from '../../../shared/models/product-item.models';
 import { BasketService } from '../../../shared/services/basket.service';
-import { distinctUntilChanged, map } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CounterComponent } from '../../counter/counter.component';
 import { MatRipple } from '@angular/material/core';
@@ -68,6 +68,7 @@ export class CardItemComponent implements OnChanges {
 		this.counter.valueChanges
 			.pipe(
 				takeUntilDestroyed(this.#destroyRef),
+				debounceTime(500),
 				distinctUntilChanged((_, newVal) => newVal === this.#productsCount())
 			)
 			.subscribe((res) => this.setQuantity(res!));
@@ -78,7 +79,7 @@ export class CardItemComponent implements OnChanges {
 	}
 
 	addToCart(): void {
-		this.counter.setValue(this.product.per);
+		this.setQuantity(this.product.per);
 	}
 
 	setQuantity(qty: number) {

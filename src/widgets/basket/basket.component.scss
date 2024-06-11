@@ -19,6 +19,7 @@
 }
 
 .products {
+	@apply tw-overflow-auto max-md:tw-max-h-[calc(100vh_-_316px)];
 	@apply tw-grid tw-gap-5 md:tw-p-2.5 tw-p-5 tw-content-start;
 }
 
