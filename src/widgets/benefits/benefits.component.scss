@@ -26,3 +26,7 @@ ul {
 	@apply md:tw-grid-cols-[1fr_auto] tw-grid-cols-1;
 	@apply tw-grid tw-items-center tw-gap-x-10 tw-gap-y-5 tw-justify-self-center tw-w-full tw-px-5;
 }
+
+.gif {
+	@apply tw-justify-self-center tw-rounded-[20px] tw-border tw-border-solid tw-border-border-second;
+}
