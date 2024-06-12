@@ -73,6 +73,7 @@ export class BasketProductComponent implements OnInit, AfterViewInit {
 				quantity: qty,
 				id: this.product.id,
 				per: this.product.per,
+				shortName: this.product.shortName,
 			})
 			.subscribe(() => {});
 	}

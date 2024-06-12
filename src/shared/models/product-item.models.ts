@@ -13,4 +13,5 @@ export interface ProductItemShort {
 	description: string;
 	price: number;
 	per: number;
+	shortName: string;
 }

@@ -92,6 +92,7 @@ export class CardItemComponent implements OnChanges {
 				quantity: qty,
 				id: this.product.id,
 				per: this.product.per,
+				shortName: this.product.shortName,
 			})
 			.subscribe(() => {});
 	}
