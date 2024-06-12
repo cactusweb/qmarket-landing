@@ -34,6 +34,8 @@ body {
 @import 'shared/scss/scrollbar';
 @import 'shared/scss/radio';
 
+@import 'widgets/basket/basket.global';
+
 button {
 	@apply tw-p-0 #{!important};
 }

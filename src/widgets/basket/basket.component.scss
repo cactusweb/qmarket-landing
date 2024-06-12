@@ -1,5 +1,5 @@
 :host {
-	@apply tw-grid tw-bg-[#2F0D4133] max-md:tw-h-screen;
+	@apply tw-grid tw-bg-[#2F0D4133] max-md:tw-h-full;
 	grid-template-rows: auto 1fr;
 }
 
@@ -20,7 +20,7 @@
 
 .products {
 	@apply tw-overflow-auto max-md:tw-max-h-[calc(100vh_-_316px)];
-	@apply tw-grid tw-gap-5 md:tw-p-2.5 tw-p-5 tw-content-start;
+	@apply tw-grid tw-gap-5 md:tw-p-2.5 tw-p-5 max-md:tw-pb-0 tw-content-start;
 }
 
 .divider {

@@ -48,6 +48,7 @@ export class BasketService {
 			width: '100%',
 			autoFocus: false,
 			restoreFocus: false,
+			panelClass: 'basket-modal-panel',
 		});
 	}
 
