@@ -33,7 +33,7 @@ export class BasketProductComponent implements OnInit, AfterViewInit {
 	titleWidth?: string;
 
 	@Output()
-	setTitleWidth = new EventEmitter<string>();
+	setTitleWidth = new EventEmitter<number>();
 
 	readonly counter = new FormControl();
 
@@ -57,9 +57,9 @@ export class BasketProductComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
-		const width = this.eRef.nativeElement.querySelector('.title')?.clientWidth;
+		const width = this.eRef.nativeElement.querySelector('.title')?.scrollWidth;
 		if (width) {
-			this.setTitleWidth.emit(width + 'px');
+			this.setTitleWidth.emit(width);
 		}
 	}
 

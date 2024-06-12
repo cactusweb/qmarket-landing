@@ -27,7 +27,15 @@ export class BasketComponent {
 		)
 	) as Signal<BasketDTO>;
 
-	readonly productsTitleWidth = signal<string | undefined>(undefined);
+	readonly productsTitleWidth = signal<number | undefined>(undefined);
 
 	constructor(private dialogRef: MatDialogRef<BasketComponent>) {}
+
+	onSetTitleWidth(newWidth: number) {
+		if (!this.productsTitleWidth()) {
+			this.productsTitleWidth.set(newWidth);
+		} else if (newWidth > this.productsTitleWidth()!) {
+			this.productsTitleWidth.set(newWidth);
+		}
+	}
 }

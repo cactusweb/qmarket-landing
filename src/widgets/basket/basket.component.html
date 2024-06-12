@@ -11,8 +11,8 @@
 			<li>
 				<qm-basket-product
 					[product]="product"
-					(setTitleWidth)="productsTitleWidth.set($event)"
-					[titleWidth]="productsTitleWidth()"
+					(setTitleWidth)="onSetTitleWidth($event)"
+					[titleWidth]="productsTitleWidth() + 'px'"
 				/>
 			</li>
 			@if ($index !== $count - 1) {
