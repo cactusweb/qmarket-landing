@@ -9,6 +9,13 @@ import { PaymentMethods } from './models/payment-methods.enums';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIcon } from '@angular/material/icon';
 import { MatRipple } from '@angular/material/core';
+import { GoalParams, MetrikaService } from '../../../shared/services/metrika.service';
+
+const PURCHASE_GOALS: GoalParams = {
+	ym: 'initiate_checkout',
+	tw: 'tw-omizm-omizp',
+	meta: 'InitiateCheckout',
+};
 
 @Component({
 	selector: 'qm-basket-payment',
@@ -32,7 +39,8 @@ export class BasketPaymentComponent {
 
 	constructor(
 		private basket: BasketService,
-		private purchase: PurchaseService
+		private purchase: PurchaseService,
+		private metrika: MetrikaService
 	) {}
 
 	onPurchase() {
@@ -41,6 +49,8 @@ export class BasketPaymentComponent {
 		} else {
 			this.purchase.viaTelegram();
 		}
+
+		this.metrika.reachGoal(PURCHASE_GOALS);
 	}
 
 	private getTotalBasketPrice(products: BasketProductDTO[]) {
