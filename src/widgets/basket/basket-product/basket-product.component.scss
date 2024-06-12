@@ -9,7 +9,7 @@ img {
 }
 
 button {
-	@apply md:tw-w-7 tw-w-10 tw-h-10;
+	@apply md:tw-w-7 tw-w-10 tw-h-10 max-md:tw-justify-self-end;
 }
 
 .title {
