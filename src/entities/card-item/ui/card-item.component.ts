@@ -11,14 +11,12 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
 
-import { MetrikaService } from '../../../shared/services/metrika.service';
 import { ProductItem } from '../../../shared/models/product-item.models';
 import { BasketService } from '../../../shared/services/basket.service';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CounterComponent } from '../../counter/counter.component';
 import { MatRipple } from '@angular/material/core';
-import { ADD_TO_CART_GOALDS } from './consts/card-item.consts';
 
 @Component({
 	selector: 'app-card-item',
@@ -45,10 +43,7 @@ export class CardItemComponent implements OnChanges {
 
 	readonly #destroyRef = inject(DestroyRef);
 
-	constructor(
-		private metrika: MetrikaService,
-		private basket: BasketService
-	) {}
+	constructor(private basket: BasketService) {}
 
 	get price() {
 		return Math.floor(this.product.price * this.product.per * 100) / 100;
@@ -81,7 +76,6 @@ export class CardItemComponent implements OnChanges {
 
 	addToCart(): void {
 		this.setQuantity(this.product.per);
-		this.metrika.reachGoal(ADD_TO_CART_GOALDS);
 	}
 
 	setQuantity(qty: number) {

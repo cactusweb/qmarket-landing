@@ -9,6 +9,13 @@ import { isPlatformBrowser } from '@angular/common';
 import { clearQueryParams, getQueryParams } from '../utils/router.utils';
 import { BasketComponent } from '../../widgets/basket/basket.component';
 import { MatDialog } from '@angular/material/dialog';
+import { GoalParams, MetrikaService } from './metrika.service';
+
+const ADD_TO_CART_GOALS: GoalParams = {
+	ym: 'add_to_cart',
+	tw: 'tw-omizm-omizo',
+	meta: 'AddToCart',
+};
 
 @Injectable()
 export class BasketService {
@@ -18,11 +25,14 @@ export class BasketService {
 	readonly #basket$ = new ReplaySubject<BasketDTO>(1);
 	readonly #pending$ = new BehaviorSubject(false);
 
+	#basketWasEmpty = true;
+
 	constructor(
 		private http: HttpClient,
 		private utm: UtmService,
 		@Inject(PLATFORM_ID) platformId: Object,
-		private matDialog: MatDialog
+		private matDialog: MatDialog,
+		private metrika: MetrikaService
 	) {
 		this.basket$ = this.#basket$.asObservable();
 		this.pending$ = this.#pending$.asObservable();
@@ -54,7 +64,12 @@ export class BasketService {
 				})
 			)
 			.subscribe({
-				next: (res) => this.#basket$.next(res),
+				next: (res) => {
+					this.#basket$.next(res);
+					if (res.products.length > 0) {
+						this.#basketWasEmpty = false;
+					}
+				},
 				error: () => {},
 			});
 	}
@@ -63,6 +78,12 @@ export class BasketService {
 		this.#pending$.next(true);
 		return this.basket$.pipe(
 			take(1),
+			tap((b) => {
+				if (b.products.length === 0 && this.#basketWasEmpty) {
+					this.metrika.reachGoal(ADD_TO_CART_GOALS);
+					this.#basketWasEmpty = false;
+				}
+			}),
 			map((basket) => {
 				if (product.quantity === 0) {
 					basket.products = basket.products.filter((p) => p.id !== product.id);
