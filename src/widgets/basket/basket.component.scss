@@ -32,7 +32,7 @@ li {
 }
 
 main {
-	@apply tw-grid md:tw-p-5 md:tw-grid-cols-[1fr_auto] tw-grid-rows-[1fr_auto] md:tw-gap-5;
+	@apply tw-grid md:tw-p-5 md:tw-grid-cols-[1fr_auto] max-md:tw-grid-rows-[1fr_auto] md:tw-gap-5;
 }
 
 qm-basket-payment {

@@ -64,6 +64,9 @@ export class BasketProductComponent implements OnInit, AfterViewInit {
 	}
 
 	setQuantity(qty: number) {
+		if (qty < 0) {
+			qty = 0;
+		}
 		this.basketService
 			.patchProduct({
 				name: this.product.name,
