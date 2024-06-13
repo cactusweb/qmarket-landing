@@ -25,7 +25,7 @@ export class PurchaseService {
 	}
 
 	viaTelegram() {
-		const url = `https://t.me/bot?start=${getUserId()}`;
+		const url = `https://t.me/QPayDevBot?start=${getUserId()}`;
 		this.openLink(url);
 	}
 

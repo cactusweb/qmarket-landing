@@ -14,11 +14,15 @@ export class MetrikaService {
 
 	reachGoal(goals: GoalParams) {
 		try {
-			(window as any).ym(this.Y_ID, 'reachGoal', goals.ym);
 			(window as any).twq('event', goals.tw);
+		} catch {}
+
+		try {
+			(window as any).ym(this.Y_ID, 'reachGoal', goals.ym);
+		} catch {}
+
+		try {
 			(window as any).fbq('track', goals.meta);
-		} catch (e) {
-			console.log(e);
-		}
+		} catch {}
 	}
 }

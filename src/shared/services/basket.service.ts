@@ -1,7 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { UtmService } from './utm.service';
-import { BehaviorSubject, ReplaySubject, finalize, map, switchMap, take, tap } from 'rxjs';
+import {
+	BehaviorSubject,
+	ReplaySubject,
+	distinctUntilChanged,
+	finalize,
+	map,
+	switchMap,
+	take,
+	tap,
+} from 'rxjs';
 import { BasketDTO, BasketProductDTO } from '../models/basket.models';
 import { API_ENDPOINTS } from '../api/api.consts';
 import { getUserId, setUserId } from '../utils/user-id.utils';
@@ -34,7 +43,10 @@ export class BasketService {
 		private matDialog: MatDialog,
 		private metrika: MetrikaService
 	) {
-		this.basket$ = this.#basket$.asObservable();
+		this.basket$ = this.#basket$
+			.asObservable()
+			.pipe(distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)));
+
 		this.pending$ = this.#pending$.asObservable();
 
 		if (isPlatformBrowser(platformId)) {
