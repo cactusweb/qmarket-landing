@@ -23,6 +23,7 @@ button {
 		@apply tw-text-sm tw-leading-4 md:tw-text-base md:tw-leading-5 tw-text-second tw-bg-[#B12EFF1A] tw-px-2 tw-py-1 tw-w-fit tw-rounded;
 		@apply max-[830px]:tw-max-w-[140px] max-md:tw-max-w-none;
 		@apply tw-whitespace-nowrap tw-overflow-hidden tw-text-ellipsis;
+		@apply tw-uppercase;
 	}
 }
 

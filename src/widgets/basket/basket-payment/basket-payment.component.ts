@@ -54,12 +54,12 @@ export class BasketPaymentComponent {
 	}
 
 	private getTotalBasketPrice(products: BasketProductDTO[]) {
-		return (
-			Math.floor(
-				products
-					.map((p) => Math.floor(p.price * p.quantity * 100) / 100)
-					.reduce((acc, val) => acc + val, 0) * 100
-			) / 100
-		);
+		const totalPrice = products
+			.map((p) => Math.floor(p.price * p.quantity * 100) / 100)
+			.reduce((acc, val) => acc + val, 0);
+
+		const secondPartLength = totalPrice.toString().split('.')[1]?.length || 0;
+
+		return secondPartLength > 1 ? Math.ceil(totalPrice * 10) / 10 : totalPrice;
 	}
 }
