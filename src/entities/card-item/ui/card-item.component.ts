@@ -65,6 +65,7 @@ export class CardItemComponent implements OnChanges {
 			.pipe(
 				takeUntilDestroyed(this.#destroyRef),
 				debounceTime(500),
+				map((val) => (val! < 0 ? 0 : val)),
 				distinctUntilChanged((_, newVal) => newVal === this.#productsCount())
 			)
 			.subscribe((res) => this.setQuantity(res!));
