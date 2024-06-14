@@ -7,6 +7,7 @@ import {
 	distinctUntilChanged,
 	finalize,
 	map,
+	shareReplay,
 	switchMap,
 	take,
 	tap,
@@ -43,9 +44,10 @@ export class BasketService {
 		private matDialog: MatDialog,
 		private metrika: MetrikaService
 	) {
-		this.basket$ = this.#basket$
-			.asObservable()
-			.pipe(distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)));
+		this.basket$ = this.#basket$.asObservable().pipe(
+			distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
+			shareReplay()
+		);
 
 		this.pending$ = this.#pending$.asObservable();
 
