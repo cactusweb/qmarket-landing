@@ -4,12 +4,14 @@ import { UtmService } from './utm.service';
 import {
 	BehaviorSubject,
 	ReplaySubject,
+	Subject,
 	distinctUntilChanged,
 	finalize,
 	map,
 	shareReplay,
 	switchMap,
 	take,
+	takeUntil,
 	tap,
 } from 'rxjs';
 import { BasketDTO, BasketProductDTO } from '../models/basket.models';
@@ -37,6 +39,8 @@ export class BasketService {
 
 	#basketWasEmpty = true;
 
+	readonly #patchReqCompleter = new Subject<void>();
+
 	constructor(
 		private http: HttpClient,
 		private utm: UtmService,
@@ -45,8 +49,13 @@ export class BasketService {
 		private metrika: MetrikaService
 	) {
 		this.basket$ = this.#basket$.asObservable().pipe(
-			distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
-			shareReplay()
+			tap((d) => console.log(d)),
+			distinctUntilChanged((prev, curr) => {
+				console.log(JSON.stringify(prev) === JSON.stringify(curr));
+				return JSON.stringify(prev) === JSON.stringify(curr);
+			}),
+			tap((d) => console.log(d)),
+			shareReplay(1)
 		);
 
 		this.pending$ = this.#pending$.asObservable();
@@ -91,6 +100,7 @@ export class BasketService {
 
 	patchProduct(product: BasketProductDTO) {
 		this.#pending$.next(true);
+		this.#patchReqCompleter.next();
 		return this.basket$.pipe(
 			take(1),
 			tap((b) => {
@@ -100,6 +110,7 @@ export class BasketService {
 				}
 			}),
 			map((basket) => {
+				basket = JSON.parse(JSON.stringify(basket));
 				if (product.quantity === 0) {
 					basket.products = basket.products.filter((p) => p.id !== product.id);
 				} else if (basket.products.map((p) => p.id).includes(product.id)) {
@@ -117,14 +128,14 @@ export class BasketService {
 			}),
 			tap((d) => this.#basket$.next(d)),
 			switchMap((basket) => this.patchBasket(basket.products)),
-			tap((basket) => this.#basket$.next(basket)),
+			// tap((basket) => this.#basket$.next(basket)),
 			finalize(() => this.#pending$.next(false))
 		);
 	}
 
 	private patchBasket(products: BasketProductDTO[]) {
 		const url = API_ENDPOINTS.BASKET.replace(':param', getUserId());
-		return this.http.patch<BasketDTO>(url, { products });
+		return this.http.patch<BasketDTO>(url, { products }).pipe(takeUntil(this.#patchReqCompleter));
 	}
 
 	private processUserId() {
