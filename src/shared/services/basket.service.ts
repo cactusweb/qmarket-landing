@@ -49,12 +49,7 @@ export class BasketService {
 		private metrika: MetrikaService
 	) {
 		this.basket$ = this.#basket$.asObservable().pipe(
-			tap((d) => console.log(d)),
-			distinctUntilChanged((prev, curr) => {
-				console.log(JSON.stringify(prev) === JSON.stringify(curr));
-				return JSON.stringify(prev) === JSON.stringify(curr);
-			}),
-			tap((d) => console.log(d)),
+			distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
 			shareReplay(1)
 		);
 
