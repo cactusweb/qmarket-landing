@@ -11,8 +11,14 @@ import { MatIcon } from '@angular/material/icon';
 import { MatRipple } from '@angular/material/core';
 import { GoalParams, MetrikaService } from '../../../shared/services/metrika.service';
 
-const PURCHASE_GOALS: GoalParams = {
-	ym: 'initiate_checkout',
+const TG_PURCHASE_GOALS: GoalParams = {
+	ym: 'payment way_telegram',
+	tw: 'tw-omizm-omizp',
+	meta: 'InitiateCheckout',
+};
+
+const DS_PURCHASE_GOALS: GoalParams = {
+	ym: 'payment way_discord',
 	tw: 'tw-omizm-omizp',
 	meta: 'InitiateCheckout',
 };
@@ -46,11 +52,11 @@ export class BasketPaymentComponent {
 	onPurchase() {
 		if (this.paymentMethod.value === PaymentMethods.DISCORD) {
 			this.purchase.viaDiscord();
+			this.metrika.reachGoal(DS_PURCHASE_GOALS);
 		} else {
 			this.purchase.viaTelegram();
+			this.metrika.reachGoal(TG_PURCHASE_GOALS);
 		}
-
-		this.metrika.reachGoal(PURCHASE_GOALS);
 	}
 
 	private getTotalBasketPrice(products: BasketProductDTO[]) {

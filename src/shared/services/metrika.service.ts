@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface GoalParams {
 	ym: string;
-	tw: string;
+	tw?: string;
 	meta: string;
 }
 
@@ -14,7 +14,9 @@ export class MetrikaService {
 
 	reachGoal(goals: GoalParams) {
 		try {
-			(window as any).twq('event', goals.tw);
+			if (goals.tw) {
+				(window as any).twq('event', goals.tw);
+			}
 		} catch {}
 
 		try {

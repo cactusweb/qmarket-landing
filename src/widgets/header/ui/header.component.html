@@ -8,11 +8,11 @@
 				<li
 					*ngFor="let item of navItems"
 					role="menuitem"
-					[attr.data-section-id]="item.toLowerCase()"
+					[attr.data-section-id]="item.display.toLowerCase()"
 					class="menu-item tw-px-5 tw-py-3 tw-cursor-pointer tw-text-center"
 					(click)="scrollTo(item)"
 				>
-					{{ item }}
+					{{ item.display }}
 				</li>
 			</ul>
 		</div>
