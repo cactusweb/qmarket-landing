@@ -48,33 +48,39 @@ export function buildPaidWebhook(
 	};
 
 	if (utm) {
+		console.log(utm);
 		wh.embeds.push({
 			title: 'UTM Data',
 			color: 11677439,
 			fields: [
 				{
 					name: 'Source',
-					value: utm[UtmTags.SOURCE],
+					// @ts-ignore
+					value: utm[UtmTags.SOURCE] || utm.source,
 					inline: true,
 				},
 				{
 					name: 'Medium',
-					value: utm[UtmTags.MEDIUM],
+					// @ts-ignore
+					value: utm[UtmTags.MEDIUM] || utm.medium,
 					inline: true,
 				},
 				{
 					name: 'Campaign',
-					value: utm[UtmTags.CAMPAIGN],
+					// @ts-ignore
+					value: utm[UtmTags.CAMPAIGN] || utm.campaign,
 					inline: true,
 				},
 				{
 					name: 'Term',
-					value: utm[UtmTags.TERM],
+					// @ts-ignore
+					value: utm[UtmTags.TERM] || utm.term,
 					inline: true,
 				},
 				{
 					name: 'Content',
-					value: utm[UtmTags.CONTENT],
+					// @ts-ignore
+					value: utm[UtmTags.CONTENT] || utm.content,
 					inline: true,
 				},
 			],

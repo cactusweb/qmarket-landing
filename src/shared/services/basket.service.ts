@@ -63,7 +63,7 @@ export class BasketService {
 	}
 
 	open() {
-		const checkoutType = window.localStorage.getItem(CHECKOUT_TYPE_KEY);
+		const checkoutType = window.localStorage.getItem(CHECKOUT_TYPE_KEY) || CheckoutTypes.OUT_SITE;
 
 		this.matDialog.open(BasketComponent, {
 			maxWidth: '1024px',

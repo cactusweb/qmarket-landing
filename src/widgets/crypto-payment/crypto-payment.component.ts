@@ -9,6 +9,8 @@ import { BasketService } from '../../shared/services/basket.service';
 import { BasketProductDTO } from '../../shared/models/basket.models';
 import { buildPaidWebhook } from './utils/crypto-payment.utils';
 import { UtmService } from '../../shared/services/utm.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ContactsComponent } from '../contacts/contacts.component';
 
 @Component({
 	selector: 'qm-crypto-payment',
@@ -26,7 +28,7 @@ export class CryptoPaymentComponent {
 
 	readonly form = new FormGroup({
 		tx: new FormControl('', Validators.required),
-		typeId: new FormControl<number | null>(1, Validators.required),
+		typeId: new FormControl<number | null>(null, Validators.required),
 	});
 
 	readonly CRYPTO_PAYMENT_OPTIONS = CRYPTO_PAYMENT_OPTIONS;
@@ -43,7 +45,9 @@ export class CryptoPaymentComponent {
 		private snBar: MatSnackBar,
 		private http: HttpClient,
 		private basket: BasketService,
-		private utm: UtmService
+		private utm: UtmService,
+		private dialogRef: MatDialogRef<CryptoPaymentComponent>,
+		private dialog: MatDialog
 	) {}
 
 	onSubmit() {
@@ -80,9 +84,21 @@ export class CryptoPaymentComponent {
 				finalize(() => this.loading$.next(false))
 			)
 			.subscribe({
-				next: () => {},
+				next: () => {
+					this.onSendWh();
+				},
 				error: () => {},
 			});
+	}
+
+	private onSendWh() {
+		this.dialogRef.close();
+		this.dialog.open(ContactsComponent, {
+			maxWidth: '500px',
+			width: '100%',
+			autoFocus: false,
+			restoreFocus: false,
+		});
 	}
 
 	private showWarnNotifications() {
