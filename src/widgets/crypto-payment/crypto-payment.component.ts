@@ -7,12 +7,15 @@ import {
 	Input,
 	Output,
 	Signal,
+	inject,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, finalize, map } from 'rxjs';
 import { CRYPTO_PAYMENT_OPTIONS } from './consts/crypto-payments.consts';
+import { BasketService } from '../../shared/services/basket.service';
+import { BasketProductDTO } from '../../shared/models/basket.models';
 
 @Component({
 	selector: 'qm-crypto-payment',
@@ -21,12 +24,15 @@ import { CRYPTO_PAYMENT_OPTIONS } from './consts/crypto-payments.consts';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CryptoPaymentComponent {
-	@Input()
 	@HostBinding('style.--primary-color')
 	primaryColor = '#B12EFF';
 
 	@Output()
 	orderSuccess = new EventEmitter<any>();
+	
+	readonly totalPrice = toSignal(
+		inject(BasketService).basket$.pipe(map((b) => this.getTotalBasketPrice(b.products)))
+	) as Signal<number>;
 
 	readonly form = new FormGroup({
 		tx: new FormControl('', Validators.required),
@@ -45,7 +51,8 @@ export class CryptoPaymentComponent {
 
 	constructor(
 		private snBar: MatSnackBar,
-		private http: HttpClient
+		private http: HttpClient,
+		private basket: BasketService,
 	) {}
 
 	onSubmit() {
@@ -90,5 +97,15 @@ export class CryptoPaymentComponent {
 
 	private getOnlyTx(txValue: string) {
 		return txValue.split('/').pop();
+	}
+	
+	private getTotalBasketPrice(products: BasketProductDTO[]) {
+		const totalPrice = products
+			.map((p) => Math.floor(p.price * p.quantity * 100) / 100)
+			.reduce((acc, val) => acc + val, 0);
+
+		const secondPartLength = totalPrice.toString().split('.')[1]?.length || 0;
+
+		return secondPartLength > 1 ? Math.ceil(totalPrice * 10) / 10 : totalPrice;
 	}
 }

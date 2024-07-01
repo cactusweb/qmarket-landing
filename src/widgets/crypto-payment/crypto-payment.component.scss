@@ -1,7 +1,7 @@
 .card {
-	@apply tw-grid tw-border-none;
-	@apply tw-justify-items-stretch tw-gap-6;
-	@apply tw-py-6 tw-px-8 max-sm:tw-py-4 max-sm:tw-px-6;
+	@apply tw-grid tw-border-none tw-relative;
+	@apply tw-justify-items-stretch;
+	@apply tw-py-6 tw-px-8 tw-pt-3 max-sm:tw-py-4 max-sm:tw-px-6;
 	@apply tw-max-w-[600px] tw-w-full;
 }
 
@@ -11,4 +11,8 @@
 
 .qm-button {
 	@apply tw-max-w-72 tw-w-full tw-justify-self-center;
+}
+
+.price {
+	@apply tw-text-lg tw-font-semibold tw-mb-3 tw-text-center;
 }

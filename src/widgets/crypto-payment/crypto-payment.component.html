@@ -1,19 +1,25 @@
 <form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
-	<div class="tw-grid tw-gap-3">
+	<h2 class="price">Checkout ${{ totalPrice() }}</h2>
+	<div class="tw-grid tw-gap-3 tw-mb-6">
 		<qm-crypto-method-selector [paymentOptions]="CRYPTO_PAYMENT_OPTIONS" formControlName="typeId" />
 
 		<qm-crypto-recipient [recipient]="recipientAddress()" />
 	</div>
 
-	<input type="text" placeholder="Input transaction hash" class="qm-input" formControlName="tx" />
+	<input
+		type="text"
+		placeholder="Input transaction hash"
+		class="qm-input tw-mb-6"
+		formControlName="tx"
+	/>
 
 	<button
 		class="qm-button"
 		color="primary"
 		*ngVar="loading$ | async as loading"
 		[disabled]="loading"
-    matRipple
-    matRippleColor="#654e7125"
+		matRipple
+		matRippleColor="#654e7125"
 	>
 		@if (!loading) {
 			Confirm
