@@ -40,7 +40,7 @@ export const CRYPTO_PAYMENT_OPTIONS: CryptoPaymentOption[] = [
 		coin: {
 			name: 'BTC',
 			fullname: 'Bitcoin',
-			image: '/assets/crypto/busd.svg',
+			image: '/assets/crypto/btc.svg',
 		},
 	},
 ];
