@@ -5,7 +5,7 @@
 	</button>
 </header>
 
-<main>
+<main [class.checkout-out-site]="checkoutType === CheckoutTypes.OUT_SITE">
 	<ul class="products">
 		@for (product of basket().products; track $index) {
 			<li>
@@ -23,5 +23,9 @@
 		}
 	</ul>
 
-	<qm-basket-payment />
+	@if (checkoutType === CheckoutTypes.OUT_SITE) {
+		<qm-basket-payment />
+	} @else {
+		<qm-basket-checkout />
+	}
 </main>

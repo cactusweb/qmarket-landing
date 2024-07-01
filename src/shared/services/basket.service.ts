@@ -22,6 +22,8 @@ import { clearQueryParams, getQueryParams } from '../utils/router.utils';
 import { BasketComponent } from '../../widgets/basket/basket.component';
 import { MatDialog } from '@angular/material/dialog';
 import { GoalParams, MetrikaService } from './metrika.service';
+import { CheckoutTypes } from '../../widgets/basket/models/checkout.models';
+import { CHECKOUT_TYPE_KEY } from '../consts/env.consts';
 
 const ADD_TO_CART_GOALS: GoalParams = {
 	ym: 'add_to_cart',
@@ -61,12 +63,15 @@ export class BasketService {
 	}
 
 	open() {
+		const checkoutType = window.localStorage.getItem(CHECKOUT_TYPE_KEY);
+
 		this.matDialog.open(BasketComponent, {
 			maxWidth: '1024px',
 			width: '100%',
 			autoFocus: false,
 			restoreFocus: false,
 			panelClass: 'basket-modal-panel',
+			data: checkoutType,
 		});
 	}
 

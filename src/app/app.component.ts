@@ -1,10 +1,12 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule, isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { UtmService } from '../shared/services/utm.service';
 import { BasketService } from '../shared/services/basket.service';
+import { CHECKOUT_TYPE_KEY } from '../shared/consts/env.consts';
+import { CheckoutTypes } from '../widgets/basket/models/checkout.models';
 
 @Component({
 	selector: 'app-root',
@@ -18,6 +20,8 @@ export class AppComponent implements OnInit {
 		private domSanitizer: DomSanitizer,
 		utmService: UtmService,
 		private basketService: BasketService,
+		private router: Router,
+		private activatedRoute: ActivatedRoute,
 		@Inject(PLATFORM_ID) private platformId: Object
 	) {
 		this.matIconRegistry.addSvgIcon(
@@ -71,8 +75,24 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		if (isPlatformBrowser(this.platformId)) {
-			this.basketService.fetch();
+		if (isPlatformServer(this.platformId)) {
+			return;
 		}
+		
+		const path = window.location.pathname.replace('/', '');
+		if (path === 'v1') {
+			window.localStorage.setItem(CHECKOUT_TYPE_KEY, CheckoutTypes.OUT_SITE);
+		} else if (path === 'v2') {
+			window.localStorage.setItem(CHECKOUT_TYPE_KEY, CheckoutTypes.ON_SITE);
+		}
+
+		if (path) {
+			this.router.navigate(['/'], {
+				queryParamsHandling: 'merge',
+				relativeTo: this.activatedRoute,
+			});
+		}
+
+		this.basketService.fetch();
 	}
 }
