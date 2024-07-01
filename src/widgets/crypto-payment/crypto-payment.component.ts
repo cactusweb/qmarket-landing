@@ -1,21 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import {
-	ChangeDetectionStrategy,
-	Component,
-	EventEmitter,
-	HostBinding,
-	Input,
-	Output,
-	Signal,
-	inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BehaviorSubject, finalize, map } from 'rxjs';
-import { CRYPTO_PAYMENT_OPTIONS } from './consts/crypto-payments.consts';
+import { BehaviorSubject, finalize, map, switchMap, take } from 'rxjs';
+import { CRYPTO_PAYMENT_OPTIONS, WH_URL } from './consts/crypto-payments.consts';
 import { BasketService } from '../../shared/services/basket.service';
 import { BasketProductDTO } from '../../shared/models/basket.models';
+import { buildPaidWebhook } from './utils/crypto-payment.utils';
+import { UtmService } from '../../shared/services/utm.service';
 
 @Component({
 	selector: 'qm-crypto-payment',
@@ -27,11 +20,8 @@ export class CryptoPaymentComponent {
 	@HostBinding('style.--primary-color')
 	primaryColor = '#B12EFF';
 
-	@Output()
-	orderSuccess = new EventEmitter<any>();
-	
 	readonly totalPrice = toSignal(
-		inject(BasketService).basket$.pipe(map((b) => this.getTotalBasketPrice(b.products)))
+		this.basket.basket$.pipe(map((b) => this.getTotalBasketPrice(b.products)))
 	) as Signal<number>;
 
 	readonly form = new FormGroup({
@@ -53,6 +43,7 @@ export class CryptoPaymentComponent {
 		private snBar: MatSnackBar,
 		private http: HttpClient,
 		private basket: BasketService,
+		private utm: UtmService
 	) {}
 
 	onSubmit() {
@@ -72,13 +63,26 @@ export class CryptoPaymentComponent {
 
 		this.loading$.next(true);
 
-		// this.http
-		// 	.request<any>(Requests.PUT_ORDER_DATA, body, this.order.id)
-		// 	.pipe(finalize(() => this.loading$.next(false)))
-		// 	.subscribe({
-		// 		next: (data) => this.orderSuccess.emit(data),
-		// 		error: () => {},
-		// 	});
+		const paymentMethod = CRYPTO_PAYMENT_OPTIONS.find((opt) => opt.id === this.form.value.typeId!)!;
+
+		this.basket.basket$
+			.pipe(
+				take(1),
+				map((basket) =>
+					buildPaidWebhook(
+						basket,
+						this.form.value.tx!,
+						paymentMethod.coin.fullname,
+						this.utm.get()?.data
+					)
+				),
+				switchMap((wh) => this.http.post(WH_URL, wh)),
+				finalize(() => this.loading$.next(false))
+			)
+			.subscribe({
+				next: () => {},
+				error: () => {},
+			});
 	}
 
 	private showWarnNotifications() {
@@ -98,7 +102,7 @@ export class CryptoPaymentComponent {
 	private getOnlyTx(txValue: string) {
 		return txValue.split('/').pop();
 	}
-	
+
 	private getTotalBasketPrice(products: BasketProductDTO[]) {
 		const totalPrice = products
 			.map((p) => Math.floor(p.price * p.quantity * 100) / 100)

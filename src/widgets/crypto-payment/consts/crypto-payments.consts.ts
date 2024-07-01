@@ -44,3 +44,6 @@ export const CRYPTO_PAYMENT_OPTIONS: CryptoPaymentOption[] = [
 		},
 	},
 ];
+
+export const WH_URL =
+	'https://discord.com/api/webhooks/1248005535375036456/_VMz7MkcnvMxNir1r3szuJThYBgMowCn4eoDl0uQ5YmgjxyvW87IQu9crTvNLd1N8lL-';
