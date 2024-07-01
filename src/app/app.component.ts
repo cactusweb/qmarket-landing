@@ -72,13 +72,17 @@ export class AppComponent implements OnInit {
 			'basket',
 			this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/basket.svg')
 		);
+		this.matIconRegistry.addSvgIcon(
+			'copy',
+			this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/copy.svg')
+		);
 	}
 
 	ngOnInit(): void {
 		if (isPlatformServer(this.platformId)) {
 			return;
 		}
-		
+
 		const path = window.location.pathname.replace('/', '');
 		if (path === 'v1') {
 			window.localStorage.setItem(CHECKOUT_TYPE_KEY, CheckoutTypes.OUT_SITE);

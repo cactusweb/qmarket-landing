@@ -67,3 +67,15 @@ button {
 		@apply tw-max-w-[840px] tw-w-full;
 	}
 }
+
+.row {
+	@apply tw-grid tw-grid-flow-col tw-justify-between tw-items-center;
+}
+
+.mdc-snackbar__surface {
+	@apply tw-bg-second/40 tw-rounded tw-text-white tw-font-medium #{!important};
+}
+
+.snbar_warn .mdc-snackbar__surface {
+	@apply tw-bg-error/50 #{!important};
+}

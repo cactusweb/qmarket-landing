@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatRipple } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
+import { CryptoPaymentComponent } from '../../crypto-payment/crypto-payment.component';
+import { CsdCryptoPaymentModule } from '../../crypto-payment/crypto-payment.module';
 
 @Component({
 	selector: 'qm-basket-checkout',
@@ -20,10 +22,15 @@ import { MatDialog } from '@angular/material/dialog';
 	`,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [MatRipple],
+	imports: [MatRipple, CsdCryptoPaymentModule],
 })
 export class BasketCheckoutComponent {
 	constructor(private dialog: MatDialog) {}
 
-	onCheckout() {}
+	onCheckout() {
+		this.dialog.open(CryptoPaymentComponent, {
+			maxWidth: '550px',
+			width: '100%',
+		});
+	}
 }

@@ -1,0 +1,20 @@
+<div class="qm-tag" (click)="copyRecipient()">
+	<span *ngIf="recipient; else placeholder">
+		{{ recipient }}
+	</span>
+	<ng-template #placeholder>
+		<span class="qm-tag__placeholder"> Firstly choose the method </span>
+	</ng-template>
+
+	<button
+		class="qm-button qm-button_icon"
+		color="primary"
+		type="button"
+		aria-label="Copy recipient wallet address"
+		[disabled]="!recipient"
+    matRipple
+    matRippleColor="#654e7125"
+	>
+		<mat-icon svgIcon="copy" />
+	</button>
+</div>

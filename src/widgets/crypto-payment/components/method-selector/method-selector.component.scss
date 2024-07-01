@@ -1,0 +1,14 @@
+:host {
+	@apply tw-grid tw-gap-2.5;
+}
+
+.control {
+	@apply tw-gap-0.5 tw-rounded-lg;
+	@apply tw-p-1 tw-bg-[#B12EFF1A];
+
+	@apply tw-grid tw-grid-cols-[repeat(auto-fit,minmax(100px,1fr))];
+}
+
+h3 {
+	@apply tw-text-center tw-text-base tw-leading-5 max-sm:tw-text-sm max-sm:tw-leading-[17px] tw-font-medium;
+}

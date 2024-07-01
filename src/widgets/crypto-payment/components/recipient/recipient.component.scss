@@ -1,0 +1,32 @@
+.qm-tag {
+	@apply tw-justify-start tw-h-11;
+	span {
+		@apply tw-text-sm tw-leading-5;
+		@apply tw-overflow-hidden tw-max-w-full tw-text-ellipsis tw-whitespace-nowrap;
+	}
+}
+
+.qm-button_icon {
+	@apply tw-h-11 tw-w-11;
+}
+
+.qm-tag {
+	@apply tw-h-10;
+	@apply tw-rounded-lg;
+	@apply tw-grid tw-items-center tw-px-3 tw-relative;
+	@apply tw-bg-[#B12EFF1A];
+
+	span {
+		@apply tw-text-base tw-font-medium tw-leading-5;
+	}
+
+	@apply max-sm:tw-justify-start tw-pr-[52px];
+
+	.qm-button_icon {
+		@apply tw-absolute tw-right-0 tw-top-0 tw-h-10 tw-w-10;
+	}
+
+	&__placeholder {
+		@apply tw-text-white/50;
+	}
+}
