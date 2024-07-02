@@ -20,6 +20,7 @@ export class AboutComponent {
 		if (!targetElement) {
 			return;
 		}
+		this.reachGoals();
 		const offsetTop = targetElement.offsetTop - 50;
 		window.scrollTo({
 			top: offsetTop,
