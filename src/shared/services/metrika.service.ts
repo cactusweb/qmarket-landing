@@ -4,6 +4,7 @@ export interface GoalParams {
 	ym: string;
 	tw?: string;
 	meta: string;
+	metaAdditional?: any;
 }
 
 @Injectable({
@@ -24,7 +25,11 @@ export class MetrikaService {
 		} catch {}
 
 		try {
-			(window as any).fbq('track', goals.meta);
+			if (!goals.metaAdditional) {
+				(window as any).fbq('track', goals.meta);
+			} else {
+				(window as any).fbq('track', goals.meta, goals.metaAdditional);
+			}
 		} catch {}
 	}
 }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, HostBinding, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,6 +11,7 @@ import { buildPaidWebhook } from './utils/crypto-payment.utils';
 import { UtmService } from '../../shared/services/utm.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ContactsComponent } from '../contacts/contacts.component';
+import { MetrikaService } from '../../shared/services/metrika.service';
 
 @Component({
 	selector: 'qm-crypto-payment',
@@ -18,7 +19,7 @@ import { ContactsComponent } from '../contacts/contacts.component';
 	styleUrls: ['./crypto-payment.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CryptoPaymentComponent {
+export class CryptoPaymentComponent implements OnInit {
 	@HostBinding('style.--primary-color')
 	primaryColor = '#B12EFF';
 
@@ -47,8 +48,16 @@ export class CryptoPaymentComponent {
 		private basket: BasketService,
 		private utm: UtmService,
 		private dialogRef: MatDialogRef<CryptoPaymentComponent>,
-		private dialog: MatDialog
+		private dialog: MatDialog,
+		private metrika: MetrikaService
 	) {}
+
+	ngOnInit(): void {
+		this.metrika.reachGoal({
+			ym: 'page_requests',
+			meta: 'InitiateCheckout',
+		});
+	}
 
 	onSubmit() {
 		this.form.markAllAsTouched();
